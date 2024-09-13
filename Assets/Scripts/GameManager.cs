@@ -1,13 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public TextMeshProUGUI scoreText;
+    private int score;
+    public TextMeshProUGUI gameOverText;
+    public bool isGameActive;
+    public Button restartButton;
+    public GameObject titleScreen;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -22,6 +32,39 @@ public class GameManager : MonoBehaviour
             Debug.Log("Escape key pressed");
             gameObject.transform.Find("Welcome Background").gameObject.SetActive(false);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameOver();
+        }
+    }
+
+    public void UpdateScore(int scoreToAdd)
+    {
+        score += scoreToAdd;
+        scoreText.text = "Score: " + score;
+    }
+
+    public void GameOver()
+    {
+        restartButton.gameObject.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
+        isGameActive = false;
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame()
+    {
+        isGameActive = true;
+        score = 0;
+
+        UpdateScore(0);
+
+        titleScreen.gameObject.SetActive(false);
     }
 
     public void ExitGame()
