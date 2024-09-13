@@ -25,10 +25,13 @@ public class GameManager : MonoBehaviour
     public Button leaveButton;
     public Button continueButton;
 
+    private PlayerController playerController;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = 60;
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -69,7 +72,9 @@ public class GameManager : MonoBehaviour
         nextLevelButton.gameObject.SetActive(true);
         levelCompleteText.gameObject.SetActive(true);
         Debug.Log("Level Complete!");
-        isGameActive = false;
+        UpdateScore(100 - (int)playerController.totalDistance);
+        Debug.Log("Score is: " + score);
+        isGameActive = false;   
     }
 
     public void GameOver()

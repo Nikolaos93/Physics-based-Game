@@ -12,11 +12,16 @@ public class PlayerController : MonoBehaviour
 
     private GameManager gameManager; // This is the GameManager script that we will use to check if the game is active
 
+    private Vector3 lastPosition;
+    public float totalDistance;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>(); // We get the Rigidbody component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // We find the GameManager object and get the GameManager script from it
+
+        lastPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -42,6 +47,10 @@ public class PlayerController : MonoBehaviour
             // Move the vehicle right(left)
             //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput); // Move the vehicle to the right (turn right)
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
+
+            float distance = Vector3.Distance(lastPosition, transform.position);
+            totalDistance += distance;
+            lastPosition = transform.position;
         }
     }
 
