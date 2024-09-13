@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     private PlayerController playerController;
 
+    public int hintClicks;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
         nextLevelButton.gameObject.SetActive(true);
         levelCompleteText.gameObject.SetActive(true);
         Debug.Log("Level Complete!");
-        UpdateScore(100 - (int)playerController.totalDistance + (int)timer);
+        UpdateScore(100 - (int)playerController.totalDistance + (int)timer - hintClicks*30);
         Debug.Log("Score is: " + score);
         isGameActive = false;   
     }
@@ -119,6 +121,11 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+    }
+
+    public void hintClicking()
+    {
+        hintClicks++;
     }
 
     public void ExitGame()
