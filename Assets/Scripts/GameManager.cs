@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,10 +18,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI levelCompleteText;
     public Button continueButton;
 
+    private float timer;
+    public TextMeshProUGUI timerCountdownText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        timer = 60;
     }
 
     // Update is called once per frame
@@ -40,6 +44,8 @@ public class GameManager : MonoBehaviour
         {
             GameOver();
         }
+        
+        CountdownTimer();
     }
 
     public void UpdateScore(int scoreToAdd)
@@ -71,10 +77,27 @@ public class GameManager : MonoBehaviour
     {
         isGameActive = true;
         score = 0;
+        timer = 60;
 
         UpdateScore(0);
 
         titleScreen.gameObject.SetActive(false);
+
+        //CountdownTimer();
+        //timerCountdownText.text = "Time: " + Mathf.Round(timer);
+    }
+
+    public void CountdownTimer()
+    {
+        if (isGameActive && timer > 0)
+        {
+            timer -= Time.deltaTime;
+            timerCountdownText.text = "Time: " + Mathf.Round(timer);
+        }
+        if (timer <= 0)
+        {
+            GameOver();
+        }
     }
 
     public void ExitGame()
