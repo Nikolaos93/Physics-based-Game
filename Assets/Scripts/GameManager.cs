@@ -16,10 +16,14 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
 
     public TextMeshProUGUI levelCompleteText;
-    public Button continueButton;
+    public Button nextLevelButton;
 
     private float timer;
     public TextMeshProUGUI timerCountdownText;
+
+    public TextMeshProUGUI pauseText;
+    public Button leaveButton;
+    public Button continueButton;
 
     // Start is called before the first frame update
     void Start()
@@ -30,14 +34,20 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !gameObject.transform.Find("Welcome Background").gameObject.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape) && isGameActive)
         {
             Debug.Log("Escape key pressed");
-            gameObject.transform.Find("Welcome Background").gameObject.SetActive(true);
-        } else if (Input.GetKeyDown(KeyCode.Escape) && gameObject.transform.Find("Welcome Background").gameObject.activeSelf)
+            pauseText.gameObject.SetActive(true);
+            leaveButton.gameObject.SetActive(true);
+            continueButton.gameObject.SetActive(true);
+            isGameActive = false;
+        } else if (Input.GetKeyDown(KeyCode.Escape) && !isGameActive)
         {
             Debug.Log("Escape key pressed");
-            gameObject.transform.Find("Welcome Background").gameObject.SetActive(false);
+            pauseText.gameObject.SetActive(false);
+            leaveButton.gameObject.SetActive(false);
+            continueButton.gameObject.SetActive(false);
+            isGameActive = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -56,9 +66,10 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete() // This method will be called when the player reaches the finish line
     {
-        continueButton.gameObject.SetActive(true);
+        nextLevelButton.gameObject.SetActive(true);
         levelCompleteText.gameObject.SetActive(true);
         Debug.Log("Level Complete!");
+        isGameActive = false;
     }
 
     public void GameOver()
@@ -85,6 +96,11 @@ public class GameManager : MonoBehaviour
 
         //CountdownTimer();
         //timerCountdownText.text = "Time: " + Mathf.Round(timer);
+    }
+
+    public void UnpauseGame()
+    {
+        isGameActive = true;
     }
 
     public void CountdownTimer()

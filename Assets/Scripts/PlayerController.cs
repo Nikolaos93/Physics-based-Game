@@ -45,11 +45,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // This method will be called when the player collides with another object (e.g., the finish line)
     {
-        if (other.CompareTag("Finish"))
+        if (other.CompareTag("Finish")) // If the player collides with an object that has the tag "Finish", then the level is complete
         {
-            gameManager.LevelComplete();
+            gameManager.LevelComplete(); // Call the LevelComplete method from the GameManager script
             transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
             Debug.Log("Level Finished");
         }
