@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
         nextLevelButton.gameObject.SetActive(true);
         levelCompleteText.gameObject.SetActive(true);
         Debug.Log("Level Complete!");
-        UpdateScore(100 - (int)playerController.totalDistance);
+        UpdateScore(100 - (int)playerController.totalDistance + (int)timer);
         Debug.Log("Score is: " + score);
         isGameActive = false;   
     }
