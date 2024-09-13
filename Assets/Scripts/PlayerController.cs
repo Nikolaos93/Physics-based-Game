@@ -44,4 +44,14 @@ public class PlayerController : MonoBehaviour
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Finish"))
+        {
+            gameManager.LevelComplete();
+            transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
+            Debug.Log("Level Finished");
+        }
+    }
 }

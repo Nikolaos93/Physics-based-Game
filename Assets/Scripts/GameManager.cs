@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
     public GameObject titleScreen;
 
+    public TextMeshProUGUI levelCompleteText;
+    public Button continueButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,13 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
+    }
+
+    public void LevelComplete() // This method will be called when the player reaches the finish line
+    {
+        continueButton.gameObject.SetActive(true);
+        levelCompleteText.gameObject.SetActive(true);
+        Debug.Log("Level Complete!");
     }
 
     public void GameOver()
