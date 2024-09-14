@@ -6,17 +6,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    // Variables for player movement
     public float speed = 1.0f;
     public Rigidbody playerRb;
     private float turnSpeed = 25.0f;
     private float horizontalInput;
     private float forwardInput;
 
-    private GameManager gameManager; // This is the GameManager script that we will use to check if the game is active
+    private GameManager gameManager; // This is the GameManager script that checks if the game is active
 
+    // Variables for tracking player's distance/displacement
     private Vector3 lastPosition;
     public float totalDistance;
 
+    // Variables for displaying player's stats
     public TextMeshProUGUI velocityText;
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI accelerationText;
@@ -24,10 +27,9 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody>(); // We get the Rigidbody component from the player object
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // We find the GameManager object and get the GameManager script from it
-
-        lastPosition = transform.position;
+        playerRb = GetComponent<Rigidbody>(); // Getting the Rigidbody component from the player object
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager object and get the GameManager script from it
+        lastPosition = transform.position; // Set the last position of the player to the starting position
     }
 
     // Update is called once per frame
@@ -41,35 +43,33 @@ public class PlayerController : MonoBehaviour
             playerRb.AddForce(Vector3.right * speed * horizontalInput);
         }*/
 
-        if (gameManager.isGameActive)
+        if (gameManager.isGameActive) // If the game is active, then the player can move
         {
             horizontalInput = Input.GetAxis("Horizontal");
             forwardInput = Input.GetAxis("Vertical");
 
             // Move the vehicle forward
-            //transform.Translate(0, 0, 1);
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput); // Replaces the above line
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput); 
 
             // Move the vehicle right(left)
-            //transform.Translate(Vector3.right * Time.deltaTime * turnSpeed * horizontalInput); // Move the vehicle to the right (turn right)
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
 
-            float distance = Vector3.Distance(lastPosition, transform.position);
-            totalDistance += distance;
-            lastPosition = transform.position;
+            float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
+            totalDistance += distance; // Adds the distance to the total distance 
+            lastPosition = transform.position; // Updates the last position to the current position
         }
 
-        playerValues();
+        playerValues(); // Calls the playerValues method to display the player's stats
     }
 
     private void playerValues() // This method will display the player's stats (e.g. velocity, distance, acceleration...) on the screen
     {
-        velocityText.text = "Velocity: " + speed + "[m/s]";
-        distanceText.text = "Distance: " + Math.Round(totalDistance, 2) + "[m]";
+        velocityText.text = "Velocity: " +(int)speed + "[m/s]";
+        distanceText.text = "Distance: " + (int)totalDistance + "[m]";
         accelerationText.text = "Acceler: " + 0 + "[m/s^2]";
     }
 
-    private void OnTriggerEnter(Collider other) // This method will be called when the player collides with another object (e.g., the finish line)
+    private void OnTriggerEnter(Collider other) // This method will be called when the player collides with another object (e.g. the finish line)
     {
         if (other.CompareTag("Finish")) // If the player collides with an object that has the tag "Finish", then the level is complete
         {
