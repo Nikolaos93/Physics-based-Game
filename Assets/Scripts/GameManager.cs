@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNextLevel() // This method will be called when the player clicks the "Restart" button
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void ExitGame() // This method will be called when the player clicks the "Exit" button
