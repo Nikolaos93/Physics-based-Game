@@ -62,12 +62,13 @@ public class PlayerController : MonoBehaviour
         playerValues();
     }
 
-    private void playerValues()
+    private void playerValues() // This method will display the player's stats (e.g. velocity, distance, acceleration...) on the screen
     {
         velocityText.text = "Velocity: " + speed + "[m/s]";
         distanceText.text = "Distance: " + Math.Round(totalDistance, 2) + "[m]";
         accelerationText.text = "Acceler: " + 0 + "[m/s^2]";
     }
+
     private void OnTriggerEnter(Collider other) // This method will be called when the player collides with another object (e.g., the finish line)
     {
         if (other.CompareTag("Finish")) // If the player collides with an object that has the tag "Finish", then the level is complete
