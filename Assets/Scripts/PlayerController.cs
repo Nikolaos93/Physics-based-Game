@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,6 +16,10 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 lastPosition;
     public float totalDistance;
+
+    public TextMeshProUGUI velocityText;
+    public TextMeshProUGUI distanceText;
+    public TextMeshProUGUI accelerationText;
 
     // Start is called before the first frame update
     void Start()
@@ -52,8 +58,16 @@ public class PlayerController : MonoBehaviour
             totalDistance += distance;
             lastPosition = transform.position;
         }
+
+        playerValues();
     }
 
+    private void playerValues()
+    {
+        velocityText.text = "Velocity: " + speed;
+        distanceText.text = "Distance: " + Math.Round(totalDistance, 2);
+        accelerationText.text = "Acceleration: " + 0;
+    }
     private void OnTriggerEnter(Collider other) // This method will be called when the player collides with another object (e.g., the finish line)
     {
         if (other.CompareTag("Finish")) // If the player collides with an object that has the tag "Finish", then the level is complete
