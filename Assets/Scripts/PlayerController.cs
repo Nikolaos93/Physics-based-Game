@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         velocityText.text = "Velocity: " + speed + "[m/s]";
         distanceText.text = "Distance: " + Math.Round(totalDistance, 2) + "[m]";
-        accelerationText.text = "Acceleration: " + 0 + "[m/s^2]";
+        accelerationText.text = "Acceler: " + 0 + "[m/s^2]";
     }
     private void OnTriggerEnter(Collider other) // This method will be called when the player collides with another object (e.g., the finish line)
     {

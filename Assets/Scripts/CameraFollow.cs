@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public GameObject player;  // Reference to the player object (vehicle/car)
+    public GameObject player;  // Reference to the player object (ball/point/vehicle)
     private Vector3 offset = new Vector3(0, 5, -7); // Offset the camera behind the player by adding to the player's position
     private Vector3 offsetFront = new Vector3(0, 2.25f, 1); //offset the camera (1st person)
 
