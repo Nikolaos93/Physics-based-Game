@@ -60,7 +60,13 @@ public class GameManager : MonoBehaviour
     public void StartGame() // This method will be called when the player clicks the "Play" button
     {
         isGameActive = true;
-        score = 0;
+        if (DataManager.Instance != null)
+        {
+            score = DataManager.Instance.scoreOverall;
+        } else
+        {
+            score = 0;
+        }
         timer = 60;
 
         UpdateScore(0);
@@ -99,6 +105,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Level Complete!");
         UpdateScore(100 - (int)playerController.totalDistance + (int)timer - hintClicks * 30);
+        DataManager.Instance.scoreOverall = score;
         nextLevelButton.gameObject.SetActive(true);
         levelCompleteText.gameObject.SetActive(true);
         levelResultsText.gameObject.SetActive(true);
@@ -122,6 +129,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame() // This method will be called when the player clicks the "Restart" button
     {
+        DataManager.Instance.scoreOverall = 0;
         SceneManager.LoadScene(0);
     }
 
