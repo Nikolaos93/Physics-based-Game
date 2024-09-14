@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public int hintClicks;
 
+    public TextMeshProUGUI levelResultsText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,10 +73,12 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete() // This method will be called when the player reaches the finish line
     {
+        Debug.Log("Level Complete!");
+        UpdateScore(100 - (int)playerController.totalDistance + (int)timer - hintClicks * 30);
         nextLevelButton.gameObject.SetActive(true);
         levelCompleteText.gameObject.SetActive(true);
-        Debug.Log("Level Complete!");
-        UpdateScore(100 - (int)playerController.totalDistance + (int)timer - hintClicks*30);
+        levelResultsText.gameObject.SetActive(true);
+        levelResultsText.text = "Score: level(100) - " + " distance(" + (int)playerController.totalDistance + ") + " + " timer(" + (int)timer + ") - " + "hints(30*" + hintClicks + ") = " + score;
         Debug.Log("Score is: " + score);
         isGameActive = false;   
     }
@@ -86,7 +90,7 @@ public class GameManager : MonoBehaviour
         isGameActive = false;
     }
 
-    public void RestartGame()
+    public void RestartGame() // This method will be called when the player clicks the "Restart" button
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
