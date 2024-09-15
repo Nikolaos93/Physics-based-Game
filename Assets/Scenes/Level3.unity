@@ -989,6 +989,7 @@ GameObject:
   - component: {fileID: 114868845}
   - component: {fileID: 114868849}
   - component: {fileID: 114868844}
+  - component: {fileID: 114868850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1003,7 +1004,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114868843}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1bd53e70a31e1643be6358bf3aa1c61, type: 3}
   m_Name: 
@@ -1127,6 +1128,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114868850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114868843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42c0f216b7b82c844b872ebecc17a1d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  playerRb: {fileID: 114868849}
+  speedOfRiver: 5
+  totalDistance: 0
+  velocityText: {fileID: 814610395}
+  distanceText: {fileID: 1441903925}
+  speedOfRiverText: {fileID: 2113809184}
 --- !u!1 &128555562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2535,7 +2555,7 @@ Transform:
   m_GameObject: {fileID: 432324423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10, y: 0.1, z: 10}
+  m_LocalPosition: {x: 10, y: 0.1, z: 20}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
