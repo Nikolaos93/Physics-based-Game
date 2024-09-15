@@ -989,6 +989,7 @@ GameObject:
   - component: {fileID: 114868845}
   - component: {fileID: 114868849}
   - component: {fileID: 114868844}
+  - component: {fileID: 114868850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1127,6 +1128,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114868850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114868843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c44ba890b63d18b40be1574184896556, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &128555562
 GameObject:
   m_ObjectHideFlags: 0
@@ -2580,6 +2593,7 @@ MonoBehaviour:
   continueButton: {fileID: 527640259}
   leaveButton: {fileID: 1481707210}
   restartButton: {fileID: 2059496718}
+  timer: 0
   isGameActive: 0
   hintClicks: 0
   titleScreen: {fileID: 1899240363}
@@ -10259,6 +10273,7 @@ MonoBehaviour:
   continueButton: {fileID: 0}
   leaveButton: {fileID: 0}
   restartButton: {fileID: 0}
+  timer: 0
   isGameActive: 0
   hintClicks: 0
   titleScreen: {fileID: 0}
