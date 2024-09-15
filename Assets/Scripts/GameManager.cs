@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     // Variables for tracking game stats and states
     private int score;
-    private float timer;
+    public float timer;
     public bool isGameActive;
     public int hintClicks;
 
@@ -49,10 +49,10 @@ public class GameManager : MonoBehaviour
             PauseGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
             GameOver();
-        }
+        }*/
         
         CountdownTimer();
     }
