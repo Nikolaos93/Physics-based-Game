@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     private PlayerController playerController;
 
+    public GameObject pauseScreen;
+    public GameObject levelFinishedScreen;
+    public GameObject statsScreen;
+
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +86,7 @@ public class GameManager : MonoBehaviour
         if (isGameActive)
         {
             Debug.Log("Escape key pressed");
+            pauseScreen.gameObject.SetActive(true);
             pauseText.gameObject.SetActive(true);
             leaveButton.gameObject.SetActive(true);
             continueButton.gameObject.SetActive(true);
@@ -90,6 +95,7 @@ public class GameManager : MonoBehaviour
         else if (!isGameActive)
         {
             Debug.Log("Escape key pressed");
+            pauseScreen.gameObject.SetActive(false);
             pauseText.gameObject.SetActive(false);
             leaveButton.gameObject.SetActive(false);
             continueButton.gameObject.SetActive(false);
@@ -106,6 +112,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("Level Complete!");
         UpdateScore(100 - (int)playerController.totalDistance + (int)timer - hintClicks * 30);
         DataManager.Instance.scoreOverall = score;
+        levelFinishedScreen.gameObject.SetActive(true);
         nextLevelButton.gameObject.SetActive(true);
         levelCompleteText.gameObject.SetActive(true);
         levelResultsText.gameObject.SetActive(true);
