@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject levelFinishedScreen;
     public GameObject statsScreen;
+    public GameObject gameOverScreen;
 
 
     // Start is called before the first frame update
@@ -129,6 +130,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() // This method will be called when the timer reaches 0
     {
+        gameOverScreen.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
         isGameActive = false;
