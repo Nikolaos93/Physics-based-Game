@@ -18,7 +18,7 @@ public class FallingGroundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < fallingGrounds.Length; i++)
+        for (int i = 0; i < fallingGrounds.Length - 1; i++)
         {
             Debug.Log(gameManager.timer);
             if (gameManager.timer < 60 - 2*i - 2)

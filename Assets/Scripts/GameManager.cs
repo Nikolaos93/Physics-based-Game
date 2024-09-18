@@ -108,6 +108,28 @@ public class GameManager : MonoBehaviour
         isGameActive = true;
     }
 
+    public void CheckpointReached() // This method will be called when the player reaches a checkpoint
+    {
+        if (isGameActive)
+        {
+            Debug.Log("Escape key pressed");
+            pauseScreen.gameObject.SetActive(true);
+            pauseText.gameObject.SetActive(true);
+            leaveButton.gameObject.SetActive(true);
+            continueButton.gameObject.SetActive(true);
+            isGameActive = false;
+        }
+        else if (!isGameActive)
+        {
+            Debug.Log("Escape key pressed");
+            pauseScreen.gameObject.SetActive(false);
+            pauseText.gameObject.SetActive(false);
+            leaveButton.gameObject.SetActive(false);
+            continueButton.gameObject.SetActive(false);
+            isGameActive = true;
+        }
+    }
+
     public void LevelComplete() // This method will be called when the player reaches the finish line
     {
         Debug.Log("Level Complete!");
