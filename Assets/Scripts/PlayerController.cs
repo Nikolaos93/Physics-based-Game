@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Variables for player movement
-    public float speed = 1.0f;
+    public float speed = 2.0f;
     public Rigidbody playerRb;
     private float turnSpeed = 25.0f;
     private float horizontalInput;
@@ -60,6 +60,11 @@ public class PlayerController : MonoBehaviour
         }
 
         playerValues(); // Calls the playerValues method to display the player's stats
+
+        if (transform.position.y < 0)
+        {
+            gameManager.GameOver(); // If the player falls off the platform, then the game is over
+        }
     }
 
     private void playerValues() // This method will display the player's stats (e.g. velocity, distance, acceleration...) on the screen
@@ -74,7 +79,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Finish")) // If the player collides with an object that has the tag "Finish", then the level is complete
         {
             gameManager.LevelComplete(); // Call the LevelComplete method from the GameManager script
-            transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
+            //transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
             Debug.Log("Level Finished");
         }
     }
