@@ -111,5 +111,11 @@ public class PlayerController2 : MonoBehaviour
             transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
             Debug.Log("Level Finished");
         }
+
+        /*if (other.CompareTag("Checkpoint")) // If the player collides with an object that has the tag "Finish", then the level is complete
+        { ?????????????????????
+            gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script
+            Debug.Log("Checkpoint Reached");
+        }*/
     }
 }
