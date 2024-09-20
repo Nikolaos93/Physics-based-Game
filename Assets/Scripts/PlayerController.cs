@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI accelerationText;
 
+    public int checkpointReached = 0;
+    //private bool checkpointReached2 = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +50,15 @@ public class PlayerController : MonoBehaviour
         {
             horizontalInput = Input.GetAxis("Horizontal");
             forwardInput = Input.GetAxis("Vertical");
+
+            if (Input.GetKeyDown(KeyCode.Space) && speed < 10 && checkpointReached > 0)
+            {
+                speed++;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftControl) && speed > 0 && checkpointReached > 0)
+            {
+                speed--;
+            }
 
             // Move the vehicle forward
             transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput); 
@@ -85,9 +97,9 @@ public class PlayerController : MonoBehaviour
 
         if (other.CompareTag("Checkpoint")) // If the player collides with an object that has the tag "Finish", then the level is complete
         {
-            gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script
-            //transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
-            Debug.Log("Checkpoint Reached");
+            checkpointReached++;
+            gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script  
+            Debug.Log("Checkpoint Reached: " + checkpointReached);
         }
     }
 }

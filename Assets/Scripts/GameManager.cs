@@ -16,11 +16,17 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI pauseText;
     public TextMeshProUGUI gameOverText;
 
+    public TextMeshProUGUI checkpointText;
+    public TextMeshProUGUI checkpointAdviceText;
+    public TextMeshProUGUI checkpointAdvice2Text;
+
     // Buttons 
     public Button nextLevelButton;
     public Button continueButton;
     public Button leaveButton;
     public Button restartButton;
+
+    public Button proceedButton;
 
     // Variables for tracking game stats and states
     private int score;
@@ -36,6 +42,8 @@ public class GameManager : MonoBehaviour
     public GameObject levelFinishedScreen;
     public GameObject statsScreen;
     public GameObject gameOverScreen;
+
+    public GameObject checkpointScreen;
 
 
     // Start is called before the first frame update
@@ -112,20 +120,34 @@ public class GameManager : MonoBehaviour
     {
         if (isGameActive)
         {
-            Debug.Log("Escape key pressed");
-            pauseScreen.gameObject.SetActive(true);
-            pauseText.gameObject.SetActive(true);
-            leaveButton.gameObject.SetActive(true);
-            continueButton.gameObject.SetActive(true);
+            checkpointScreen.gameObject.SetActive(true);
+            checkpointText.gameObject.SetActive(true);
+            if (playerController.checkpointReached == 1)
+            {
+                checkpointAdviceText.gameObject.SetActive(true);
+            }
+            else if (playerController.checkpointReached == 2)
+            {
+                checkpointAdvice2Text.gameObject.SetActive(true);
+            }
+            //checkpointAdviceText.gameObject.SetActive(true);
+            proceedButton.gameObject.SetActive(true);
             isGameActive = false;
         }
         else if (!isGameActive)
         {
-            Debug.Log("Escape key pressed");
-            pauseScreen.gameObject.SetActive(false);
-            pauseText.gameObject.SetActive(false);
-            leaveButton.gameObject.SetActive(false);
-            continueButton.gameObject.SetActive(false);
+            checkpointScreen.gameObject.SetActive(false);
+            checkpointText.gameObject.SetActive(false);
+            if (playerController.checkpointReached == 1)
+            {
+                checkpointAdviceText.gameObject.SetActive(false);
+            }
+            else if (playerController.checkpointReached == 2)
+            {
+                checkpointAdvice2Text.gameObject.SetActive(false);
+            }
+            //checkpointAdviceText.gameObject.SetActive(false);
+            proceedButton.gameObject.SetActive(false);
             isGameActive = true;
         }
     }
