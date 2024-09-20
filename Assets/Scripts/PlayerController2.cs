@@ -7,13 +7,13 @@ using UnityEngine;
 public class PlayerController2 : MonoBehaviour
 {
     // Variables for player movement
-    public float speed = 10.0f;
+    public float speed = 7.0f;
     public Rigidbody playerRb;
     private float turnSpeed = 25.0f;
     private float horizontalInput;
     private float forwardInput;
 
-    public float speedOfRiver = 5.0f;
+    public float speedOfRiver = 7.0f;
     private float speedUpstream;
 
     private GameManager gameManager; // This is the GameManager script that checks if the game is active
@@ -48,22 +48,41 @@ public class PlayerController2 : MonoBehaviour
             playerRb.AddForce(Vector3.right * speed * horizontalInput);
         }*/
 
+        speedUpstream = speed - speedOfRiver;
         if (gameManager.isGameActive) // If the game is active, then the player can move
         {
             horizontalInput = Input.GetAxis("Horizontal");
             forwardInput = Input.GetAxis("Vertical");
 
-            // Move the vehicle forward
-            if (transform.position.z > 5 && transform.position.z < 15)
+            if (Input.GetKeyDown(KeyCode.Space) && speed < 10)
             {
-                speed = speedUpstream;
+                speed++;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftControl) && speed > 0)
+            {
+                speed--;
+            }
+
+            // Move the vehicle forward
+            if (transform.position.x > -1 && transform.position.x < 1)
+            {
+                speedOfRiver = 7;
+                transform.Translate(Vector3.forward * Time.deltaTime * speedUpstream * forwardInput);
+            }
+            else if (transform.position.x > -3 && transform.position.x < 3)
+            {
+                speedOfRiver = 5;
                 transform.Translate(Vector3.forward * Time.deltaTime * speedUpstream * forwardInput);
             }
             else
             {
+                speedOfRiver = 3;
+                transform.Translate(Vector3.forward * Time.deltaTime * speedUpstream * forwardInput);
+            }
+            /*{
                 speed = 10;
                 transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-            }
+            }*/
             
 
             // Move the vehicle right(left)

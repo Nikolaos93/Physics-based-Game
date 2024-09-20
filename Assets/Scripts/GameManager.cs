@@ -128,6 +128,7 @@ public class GameManager : MonoBehaviour
             }
             else if (playerController.checkpointReached == 2)
             {
+                checkpointAdviceText.gameObject.SetActive(false);
                 checkpointAdvice2Text.gameObject.SetActive(true);
             }
             //checkpointAdviceText.gameObject.SetActive(true);
