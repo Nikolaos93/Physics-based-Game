@@ -73,11 +73,13 @@ public class PlayerController2 : MonoBehaviour
             {
                 speedOfRiver = 5;
                 transform.Translate(Vector3.forward * Time.deltaTime * speedUpstream * forwardInput);
+                //playerRb.AddForce(Vector3.forward * Time.deltaTime * speedUpstream * forwardInput);
             }
             else
             {
                 speedOfRiver = 3;
                 transform.Translate(Vector3.forward * Time.deltaTime * speedUpstream * forwardInput);
+                //playerRb.AddForce(Vector3.right * Time.deltaTime * speedUpstream * horizontalInput);
             }
             /*{
                 speed = 10;
