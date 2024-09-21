@@ -7,8 +7,8 @@ using UnityEngine;
 public class PlayerController4 : MonoBehaviour
 {
     // Variables for player movement
-    public float speed = 5.0f;
-    public float acceleration = 1.0f;
+    public float speed = 0f;
+    public float acceleration = 1.0f; 
     public Rigidbody playerRb;
     private float turnSpeed = 25.0f;
     private float horizontalInput;
@@ -25,7 +25,9 @@ public class PlayerController4 : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI accelerationText;
 
-    public GameObject cube;
+    //public GameObject cube; // ???
+    public int checkpointReached = 0;
+    private float maxSpeed = 35.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -51,17 +53,23 @@ public class PlayerController4 : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             forwardInput = Input.GetAxis("Vertical");
 
-            if (Input.GetKeyDown(KeyCode.Space) && acceleration < 10)
+            if (Input.GetKeyDown(KeyCode.Space) && acceleration < 5)
             {
                 acceleration++;
             }
-            if (Input.GetKeyDown(KeyCode.LeftShift) && acceleration > 0)
+            if (Input.GetKeyDown(KeyCode.LeftControl) && acceleration > -5)
             {
                 acceleration--;
             }
 
             // Move the vehicle forward
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * acceleration * forwardInput);
+            if (speed < maxSpeed)
+            {
+                speed += acceleration * Time.deltaTime;
+            }
+            //transform.Translate(Vector3.forward * Time.deltaTime * speed * acceleration * forwardInput);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+            //transform.position.x = transform.position.x + speed * Time.deltaTime;
 
             // Move the vehicle right(left)
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
@@ -75,7 +83,7 @@ public class PlayerController4 : MonoBehaviour
 
         if (gameManager.timer <= 55)
         {
-            cube.SetActive(true);
+            //cube.SetActive(true);
         }
     }
 
@@ -91,8 +99,15 @@ public class PlayerController4 : MonoBehaviour
         if (other.CompareTag("Finish")) // If the player collides with an object that has the tag "Finish", then the level is complete
         {
             gameManager.LevelComplete(); // Call the LevelComplete method from the GameManager script
-            transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
+            //transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
             Debug.Log("Level Finished");
+        }
+
+        if (other.CompareTag("Checkpoint")) // If the player collides with an object that has the tag "Finish", then the level is complete
+        {
+            checkpointReached++;
+            gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script  
+            Debug.Log("Checkpoint Reached: " + checkpointReached);
         }
     }
 }

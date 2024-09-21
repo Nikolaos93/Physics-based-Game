@@ -665,7 +665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &72261583
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1213,6 +1213,7 @@ GameObject:
   - component: {fileID: 114868845}
   - component: {fileID: 114868849}
   - component: {fileID: 114868844}
+  - component: {fileID: 114868850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1227,7 +1228,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 114868843}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1bd53e70a31e1643be6358bf3aa1c61, type: 3}
   m_Name: 
@@ -1352,6 +1353,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114868850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114868843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed48ac350b214aa4db87152365478485, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  acceleration: 1
+  playerRb: {fileID: 114868849}
+  totalDistance: 0
+  velocityText: {fileID: 814610395}
+  distanceText: {fileID: 1441903925}
+  accelerationText: {fileID: 2113809184}
+  cube: {fileID: 0}
+  checkpointReached: 0
 --- !u!1 &128555562
 GameObject:
   m_ObjectHideFlags: 0
@@ -4628,7 +4650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &526275730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7226,7 +7248,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Physics based Game
+  m_text: 'LEVEL 4
+
+
+    Accelerated (Linear) Motion'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8014,7 +8039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &839700250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12937,7 +12962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1451844772
 RectTransform:
   m_ObjectHideFlags: 0
