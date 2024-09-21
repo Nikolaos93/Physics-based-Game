@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController3 : MonoBehaviour
 {
     // Variables for player movement
-    public float speed = 10.0f;
+    public float speed = 5.0f;
     public Rigidbody playerRb;
     private float turnSpeed = 25.0f;
     private float horizontalInput;
@@ -27,6 +27,8 @@ public class PlayerController3 : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI speedOfRiverText;
 
+    public int checkpointReached = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,7 +36,7 @@ public class PlayerController3 : MonoBehaviour
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager object and get the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
 
-        speedUpstream = speed - speedOfRiver;
+        speedUpstream = speed - speedOfRiver; // ??
     }
 
     // Update is called once per frame
@@ -53,16 +55,32 @@ public class PlayerController3 : MonoBehaviour
             horizontalInput = Input.GetAxis("Horizontal");
             forwardInput = Input.GetAxis("Vertical");
 
+            if (Input.GetKeyDown(KeyCode.Space) && speed < 10)
+            {
+                speed++;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftControl) && speed > 0)
+            {
+                speed--;
+            }
+
             // Move the vehicle forward
-            if (transform.position.z > 5 && transform.position.z < 15)
+            if (transform.position.z > 2.5 && transform.position.z < 37.5)
             {
                 //speed = speedUpstream;
+                Debug.Log("First river: ");
                 transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-                transform.Translate(Vector3.left * Time.deltaTime * speedUpstream);
+                transform.Translate(Vector3.left * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 47.5 && transform.position.z < 82.5)
+            {
+                Debug.Log("Second river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+                transform.Translate(Vector3.right * Time.deltaTime * speedOfRiver, Space.World);
             }
             else
             {
-                speed = 10;
+                speed = 5;
                 transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
             }
 
@@ -92,6 +110,13 @@ public class PlayerController3 : MonoBehaviour
             gameManager.LevelComplete(); // Call the LevelComplete method from the GameManager script
             transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
             Debug.Log("Level Finished");
+        }
+
+        if (other.CompareTag("Checkpoint")) // If the player collides with an object that has the tag "Finish", then the level is complete
+        {
+            checkpointReached++;
+            gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script  
+            Debug.Log("Checkpoint Reached: " + checkpointReached);
         }
     }
 }
