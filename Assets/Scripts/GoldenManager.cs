@@ -31,6 +31,13 @@ public class GoldenManager : MonoBehaviour
             Instantiate(goldenExplosionParticle, transform.position, goldenExplosionParticle.transform.rotation);
             Debug.Log("Tray 1" + playerController6.tray1);
         }
+
+        if (collision.gameObject.CompareTag("Tray5") && gameObject.CompareTag("CubeG")) // If the player collides with an object that has the tag "Finish", then the level is complete
+        {
+            playerController6.tray5 = true;
+            Instantiate(goldenExplosionParticle, transform.position, goldenExplosionParticle.transform.rotation);
+            Debug.Log("Tray 5" + playerController6.tray5);
+        }
     }
 
 }

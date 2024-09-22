@@ -30,6 +30,11 @@ public class PlayerController6 : MonoBehaviour
     public bool tray1 = false;
     public bool tray2 = false;
     public bool tray3 = false;
+    public bool tray4 = false;
+    public bool tray5 = false;
+
+    private GameObject gate1;
+    private GameObject gate2;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +42,8 @@ public class PlayerController6 : MonoBehaviour
         playerRb = GetComponent<Rigidbody>(); // Getting the Rigidbody component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager object and get the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
+        gate1 = GameObject.Find("Gate1");
+        gate2 = GameObject.Find("Gate2");
     }
 
     // Update is called once per frame
@@ -80,6 +87,15 @@ public class PlayerController6 : MonoBehaviour
         if (transform.position.y < 0)
         {
             gameManager.GameOver(); // If the player falls off the platform, then the game is over
+        }
+
+        if (tray1 && tray2 && tray3)
+        {
+            gate1.SetActive(false);
+        }
+        if (tray4 && tray5)
+        {
+            gate2.SetActive(false);
         }
     }
 
