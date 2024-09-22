@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI pauseText;
     public TextMeshProUGUI gameOverText;
 
+    /*public TextMeshProUGUI finalScoreText;
+    public TextMeshProUGUI highScoreText;*/
+
     public TextMeshProUGUI checkpointText;
     public TextMeshProUGUI checkpointAdviceText;
     public TextMeshProUGUI checkpointAdvice2Text;
@@ -34,6 +37,9 @@ public class GameManager : MonoBehaviour
     public bool isGameActive;
     public int hintClicks;
 
+    private int highscore;
+    public TMP_Text highscoreText;
+
     // Title Screen (Main Menu) and Player Controller script reference
     public GameObject titleScreen;
     private PlayerController playerController;
@@ -49,6 +55,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*highscore = PlayerPrefs.GetInt("SavedHighScore", 0);
+        highscoreText.text = "" + highscore.ToString();*/
+
         // Initialize the timer and get the PlayerController script
         if (SceneManager.GetActiveScene().name == "Level 5")
         {
@@ -182,6 +191,11 @@ public class GameManager : MonoBehaviour
         levelResultsText.text = "Score: level(100) - " + " distance(" + (int)playerController.totalDistance + ") + " + " timer(" + (int)timer + ") - " + "hints(30*" + hintClicks + ") = " + score;
         Debug.Log("Score is: " + score);
         isGameActive = false;
+        if (SceneManager.GetActiveScene().name == "Level 5")
+        {
+            ScoreManager.instance.HighScoreCheck(score);
+            RestartGame();
+        }
     }
 
     public void UpdateScore(int scoreToAdd) // Method to update the score
@@ -192,6 +206,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() // This method will be called when the timer reaches 0
     {
+        ScoreManager.instance.HighScoreCheck(score);
         gameOverScreen.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         gameOverText.gameObject.SetActive(true);
