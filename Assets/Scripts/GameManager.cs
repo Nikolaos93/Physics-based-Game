@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Initialize the timer and get the PlayerController script
-        if (SceneManager.GetActiveScene().name == "SampleScene 5")
+        if (SceneManager.GetActiveScene().name == "Level 5")
         {
             timer = 180;
         }
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
             score = 0;
         }
 
-        if (SceneManager.GetActiveScene().name == "SampleScene 5")
+        if (SceneManager.GetActiveScene().name == "Level 5")
         {
             timer = 180;
         }
