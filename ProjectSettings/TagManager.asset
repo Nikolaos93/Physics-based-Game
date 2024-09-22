@@ -8,6 +8,12 @@ TagManager:
   - Bomb
   - Gem
   - Star
+  - TrayG
+  - TrayS
+  - TrayB
+  - CubeG
+  - CubeS
+  - CubeB
   layers:
   - Default
   - TransparentFX

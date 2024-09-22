@@ -50,7 +50,15 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         // Initialize the timer and get the PlayerController script
-        timer = 60;
+        if (SceneManager.GetActiveScene().name == "SampleScene 5")
+        {
+            timer = 180;
+        }
+        else
+        {
+            timer = 60;
+        }
+        //timer = 60;
         playerController = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
@@ -80,7 +88,16 @@ public class GameManager : MonoBehaviour
         {
             score = 0;
         }
-        timer = 60;
+
+        if (SceneManager.GetActiveScene().name == "SampleScene 5")
+        {
+            timer = 180;
+        }
+        else
+        {
+            timer = 60;
+        }
+        //timer = 60;
 
         UpdateScore(0);
 
