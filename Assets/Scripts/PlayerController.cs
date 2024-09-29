@@ -26,11 +26,13 @@ public class PlayerController : MonoBehaviour
 
     public int checkpointReached = 0;
     //private bool checkpointReached2 = false;
+    public AudioSource playerAs;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>(); // Getting the Rigidbody component from the player object
+        playerAs.GetComponent<AudioSource>(); // Getting the AudioSource component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager object and get the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
     }
@@ -66,9 +68,22 @@ public class PlayerController : MonoBehaviour
             // Move the vehicle right(left)
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
 
+            if (Input.GetKeyDown(KeyCode.W) && !playerAs.loop)
+            {
+                playerAs.loop = true;
+                playerAs.Play();
+            }
+            else if (Input.GetKeyUp(KeyCode.W) && playerAs.loop)
+            {
+                playerAs.Stop();
+                playerAs.loop = false;
+            }
+
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
             lastPosition = transform.position; // Updates the last position to the current position
+
+            
         }
 
         playerValues(); // Calls the playerValues method to display the player's stats
