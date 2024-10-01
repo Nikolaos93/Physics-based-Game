@@ -63,12 +63,12 @@ public class PlayerController : MonoBehaviour
             }
 
             // Move the vehicle forward
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput); 
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
             // Move the vehicle right(left)
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
 
-            if (Input.GetKeyDown(KeyCode.W) && !playerAs.loop)
+            if (Input.GetKeyDown(KeyCode.W) && !playerAs.loop/* && gameManager.isGameActive*/)
             {
                 playerAs.loop = true;
                 playerAs.Play();
@@ -78,13 +78,20 @@ public class PlayerController : MonoBehaviour
                 playerAs.Stop();
                 playerAs.loop = false;
             }
+            
 
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
             lastPosition = transform.position; // Updates the last position to the current position
-
-            
+  
         }
+
+        if (!gameManager.isGameActive)
+        {
+            playerAs.Stop();
+            playerAs.loop = false;
+        }
+
 
         playerValues(); // Calls the playerValues method to display the player's stats
 
