@@ -10,7 +10,7 @@ public class SilverManager : MonoBehaviour
 
     public bool silverCheck1 = false;
 
-    private PlayerController6 playerController6;
+    private PlayerController5 playerController5;
     private BronzeManager bronzeManager;
 
 
@@ -18,7 +18,7 @@ public class SilverManager : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
-        playerController6 = GameObject.Find("Player").GetComponent<PlayerController6>();
+        playerController5 = GameObject.Find("Player").GetComponent<PlayerController5>();
         bronzeManager = GameObject.Find("Bronze Cube (1)").GetComponent<BronzeManager>();
     }
 
@@ -32,9 +32,9 @@ public class SilverManager : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("TrayS") && gameObject.CompareTag("CubeS")) // If the player collides with an object that has the tag "Finish", then the level is complete
         {
-            playerController6.tray2 = true;
+            playerController5.tray2 = true;
             Instantiate(silverExplosionParticle, transform.position, silverExplosionParticle.transform.rotation);
-            Debug.Log("Tray 2" + playerController6.tray2);
+            Debug.Log("Tray 2" + playerController5.tray2);
         }
 
         if (collision.gameObject.CompareTag("Tray4") && gameObject.CompareTag("CubeS")) // If the player collides with an object that has the tag "Finish", then the level is complete
@@ -43,8 +43,8 @@ public class SilverManager : MonoBehaviour
             Instantiate(silverExplosionParticle, transform.position, silverExplosionParticle.transform.rotation);
             if (silverCheck1 && bronzeManager.bronzeCheck1)
             {
-                playerController6.tray4 = true;
-                Debug.Log("Tray 4" + playerController6.tray4);
+                playerController5.tray4 = true;
+                Debug.Log("Tray 4" + playerController5.tray4);
             }
         }
     }

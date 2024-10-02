@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody playerRb;
     private float turnSpeed = 25.0f;
     private float horizontalInput;
-    private float forwardInput;
+    public float forwardInput;
 
     private GameManager gameManager; // This is the GameManager script that checks if the game is active
 

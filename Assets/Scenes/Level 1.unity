@@ -1313,6 +1313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   playerRb: {fileID: 114868849}
+  forwardInput: 0
   totalDistance: 0
   velocityText: {fileID: 814610395}
   distanceText: {fileID: 1441903925}
