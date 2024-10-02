@@ -8,9 +8,9 @@ public class PlayerController6 : MonoBehaviour
 {
     // Variables for player movement
     public float speed = 5.0f;
-    public float acceleration = 1.0f;
+    //public float acceleration = 1.0f;
     public Rigidbody playerRb;
-    private float turnSpeed = 25.0f;
+    //private float turnSpeed = 25.0f;
     private float horizontalInput;
     private float forwardInput;
 
@@ -26,10 +26,19 @@ public class PlayerController6 : MonoBehaviour
     public TextMeshProUGUI accelerationText;
 
     //public GameObject cube; // ???
-    public int checkpointReached = 0;
-    private float maxSpeed = 35.0f;
+    //public int checkpointReached = 0; ??
+    //private float maxSpeed = 35.0f;
 
     private GameObject focalPoint; // ???
+
+    /*public GameObject collectable1;
+    public GameObject collectable2;*/
+    public GameObject[] collectables;
+    public Transform[] spawningPoints;
+    public int collectableCount;
+
+    private Bomb bCollectable; // refference to Bomb.cs where number of collected pickups is tracked
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +48,8 @@ public class PlayerController6 : MonoBehaviour
         lastPosition = transform.position; // Set the last position of the player to the starting position
 
         focalPoint = GameObject.Find("Focal Point"); // ???
+
+        collectableCount = 0;
     }
 
     // Update is called once per frame
@@ -59,6 +70,16 @@ public class PlayerController6 : MonoBehaviour
 
             playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
             playerRb.AddForce(focalPoint.transform.right * speed * horizontalInput);
+
+
+            //Debug.Log(bCollectable.collectedNumber);
+            //Debug.Log(bCollectable.collectedNumber);
+            /*if (collectableCount < bCollectable.collectedNumber)
+            {
+                GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]);
+                collectableCount++;
+            }*/
+
 
             /*if (Input.GetKeyDown(KeyCode.Space) && acceleration < 5)
             {
@@ -88,10 +109,7 @@ public class PlayerController6 : MonoBehaviour
 
         playerValues(); // Calls the playerValues method to display the player's stats
 
-        if (gameManager.timer <= 55)
-        {
-            //cube.SetActive(true);
-        }
+        //StartCoroutine(CollectableCountdownRoutine());
 
         if (transform.position.y < -5)
         {
@@ -104,7 +122,7 @@ public class PlayerController6 : MonoBehaviour
     {
         velocityText.text = "Velocity: " + (int)speed + "[m/s]";
         distanceText.text = "Distance: " + (int)totalDistance + "[m]";
-        accelerationText.text = "Acceler: " + (int)acceleration + "[m/s^2]";
+        accelerationText.text = "Acceler: " + (int)2 + "[m/s^2]";
     }
 
     private void OnTriggerEnter(Collider other) // This method will be called when the player collides with another object (e.g. the finish line)
@@ -118,9 +136,34 @@ public class PlayerController6 : MonoBehaviour
 
         if (other.CompareTag("Checkpoint")) // If the player collides with an object that has the tag "Finish", then the level is complete
         {
-            checkpointReached++;
+            //checkpointReached++;
             gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script  
-            Debug.Log("Checkpoint Reached: " + checkpointReached);
+            //Debug.Log("Checkpoint Reached: " + checkpointReached);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Gem") && gameObject.CompareTag("Player"))
+        {
+            GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]);
+        }
+        if (collision.gameObject.CompareTag("Star") && gameObject.CompareTag("Player"))
+        {
+            GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]);
+        }
+
+    }
+
+    /*IEnumerator CollectableCountdownRoutine()
+    {
+        yield return new WaitForSeconds(6);
+        SpawnCollectable();
+    }
+
+    private void SpawnCollectable()
+    {
+        GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]);
+    }*/
+
 }
