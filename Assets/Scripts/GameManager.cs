@@ -191,7 +191,7 @@ public class GameManager : MonoBehaviour
         levelResultsText.text = "Score: level(100) - " + " distance(" + (int)playerController.totalDistance + ") + " + " timer(" + (int)timer + ") - " + "hints(30*" + hintClicks + ") = " + score;
         Debug.Log("Score is: " + score);
         isGameActive = false;
-        if (SceneManager.GetActiveScene().name == "Level 5")
+        if (SceneManager.GetActiveScene().name == "Level 6")
         {
             ScoreManager.instance.HighScoreCheck(score);
             RestartGame();
