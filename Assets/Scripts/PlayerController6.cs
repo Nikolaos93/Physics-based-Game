@@ -7,7 +7,7 @@ using UnityEngine;
 public class PlayerController6 : MonoBehaviour
 {
     // Variables for player movement
-    public float speed = 0f;
+    public float speed = 5.0f;
     public float acceleration = 1.0f;
     public Rigidbody playerRb;
     private float turnSpeed = 25.0f;
@@ -29,12 +29,16 @@ public class PlayerController6 : MonoBehaviour
     public int checkpointReached = 0;
     private float maxSpeed = 35.0f;
 
+    private GameObject focalPoint; // ???
+
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>(); // Getting the Rigidbody component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager object and get the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
+
+        focalPoint = GameObject.Find("Focal Point"); // ???
     }
 
     // Update is called once per frame
@@ -50,10 +54,13 @@ public class PlayerController6 : MonoBehaviour
 
         if (gameManager.isGameActive) // If the game is active, then the player can move
         {
-            horizontalInput = Input.GetAxis("Horizontal");
             forwardInput = Input.GetAxis("Vertical");
+            horizontalInput = Input.GetAxis("Horizontal");
 
-            if (Input.GetKeyDown(KeyCode.Space) && acceleration < 5)
+            playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput);
+            playerRb.AddForce(focalPoint.transform.right * speed * horizontalInput);
+
+            /*if (Input.GetKeyDown(KeyCode.Space) && acceleration < 5)
             {
                 acceleration++;
             }
@@ -72,7 +79,7 @@ public class PlayerController6 : MonoBehaviour
             //transform.position.x = transform.position.x + speed * Time.deltaTime;
 
             // Move the vehicle right(left)
-            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
+            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line*/
 
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
@@ -85,6 +92,12 @@ public class PlayerController6 : MonoBehaviour
         {
             //cube.SetActive(true);
         }
+
+        if (transform.position.y < -5)
+        {
+            gameManager.GameOver(); // If the player falls off the platform, then the game is over
+        }
+
     }
 
     private void playerValues() // This method will display the player's stats (e.g. velocity, distance, acceleration...) on the screen

@@ -240,9 +240,13 @@ public class GameManager : MonoBehaviour
             timer -= Time.deltaTime;
             timerCountdownText.text = "Time: " + Mathf.Round(timer);
         }
-        if (timer <= 0)
+        if (timer <= 0 && SceneManager.GetActiveScene().buildIndex != 5)
         {
             GameOver(); // Call the GameOver method when the timer reaches 0
+        }
+        if (timer <= 0 && SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            LevelComplete(); // Call the LevelComplete method when the timer reaches 0
         }
     }
 
