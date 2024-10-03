@@ -1930,7 +1930,7 @@ GameObject:
   - component: {fileID: 114868845}
   - component: {fileID: 114868849}
   - component: {fileID: 114868844}
-  - component: {fileID: 114868852}
+  - component: {fileID: 114868850}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1952,11 +1952,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   playerRb: {fileID: 114868849}
+  forwardInput: 0
   totalDistance: 0
   velocityText: {fileID: 814610395}
   distanceText: {fileID: 1441903925}
   accelerationText: {fileID: 2113809184}
   checkpointReached: 0
+  playerAs: {fileID: 0}
 --- !u!135 &114868845
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2070,7 +2072,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &114868852
+--- !u!114 &114868850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2079,11 +2081,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 114868843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3daf5deda1c9bb54187b77d39384b1af, type: 3}
+  m_Script: {fileID: 11500000, guid: c44ba890b63d18b40be1574184896556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  playerRb: {fileID: 0}
+  playerRb: {fileID: 114868849}
   totalDistance: 0
   velocityText: {fileID: 814610395}
   distanceText: {fileID: 1441903925}
@@ -7003,6 +7005,7 @@ MonoBehaviour:
   timer: 0
   isGameActive: 0
   hintClicks: 0
+  highscoreText: {fileID: 0}
   titleScreen: {fileID: 1899240363}
   pauseScreen: {fileID: 266820696}
   levelFinishedScreen: {fileID: 2077504558}
@@ -28864,6 +28867,7 @@ MonoBehaviour:
   timer: 0
   isGameActive: 0
   hintClicks: 0
+  highscoreText: {fileID: 0}
   titleScreen: {fileID: 0}
   pauseScreen: {fileID: 0}
   levelFinishedScreen: {fileID: 0}
