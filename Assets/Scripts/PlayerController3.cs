@@ -65,23 +65,85 @@ public class PlayerController3 : MonoBehaviour
             }
 
             // Move the vehicle forward
-            if (transform.position.z > 2.5 && transform.position.z < 37.5)
+            if (transform.position.z > 2.5 && transform.position.z < 9.5)
             {
                 //speed = speedUpstream;
+                speedOfRiver = 3.0f;
                 Debug.Log("First river: ");
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
                 transform.Translate(Vector3.left * Time.deltaTime * speedOfRiver, Space.World);
             }
-            else if (transform.position.z > 47.5 && transform.position.z < 82.5)
+            else if (transform.position.z > 9.5 && transform.position.z < 16.5)
             {
+                //speed = speedUpstream;
+                speedOfRiver = 5.0f;
+                Debug.Log("First river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
+                transform.Translate(Vector3.left * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 16.5 && transform.position.z < 23.5)
+            {
+                //speed = speedUpstream;
+                speedOfRiver = 7.0f;
+                Debug.Log("First river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
+                transform.Translate(Vector3.left * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 23.5 && transform.position.z < 30.5)
+            {
+                //speed = speedUpstream;
+                speedOfRiver = 5.0f;
+                Debug.Log("First river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
+                transform.Translate(Vector3.left * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 30.5 && transform.position.z < 37.5)
+            {
+                //speed = speedUpstream;
+                speedOfRiver = 3.0f;
+                Debug.Log("First river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
+                transform.Translate(Vector3.left * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 47.5 && transform.position.z < 54.5)
+            {
+                speedOfRiver = 3.0f;
                 Debug.Log("Second river: ");
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
+                transform.Translate(Vector3.right * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 54.5 && transform.position.z < 61.5)
+            {
+                speedOfRiver = 5.0f;
+                Debug.Log("Second river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
+                transform.Translate(Vector3.right * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 61.5 && transform.position.z < 68.5)
+            {
+                speedOfRiver = 7.0f;
+                Debug.Log("Second river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
+                transform.Translate(Vector3.right * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 68.5 && transform.position.z < 75.5)
+            {
+                speedOfRiver = 5.0f;
+                Debug.Log("Second river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
+                transform.Translate(Vector3.right * Time.deltaTime * speedOfRiver, Space.World);
+            }
+            else if (transform.position.z > 75.5 && transform.position.z < 83.5)
+            {
+                speedOfRiver = 3.0f;
+                Debug.Log("Second river: ");
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
                 transform.Translate(Vector3.right * Time.deltaTime * speedOfRiver, Space.World);
             }
             else
             {
                 speed = 5;
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
             }
 
 

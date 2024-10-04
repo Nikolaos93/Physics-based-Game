@@ -67,20 +67,20 @@ public class PlayerController2 : MonoBehaviour
             if (transform.position.x > -1 && transform.position.x < 1)
             {
                 speedOfRiver = 7;
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
                 transform.Translate(-Vector3.forward * Time.deltaTime * speedOfRiver, Space.World);
             }
             else if (transform.position.x > -3 && transform.position.x < 3)
             {
                 speedOfRiver = 5;
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
                 transform.Translate(-Vector3.forward * Time.deltaTime * speedOfRiver, Space.World);
                 //playerRb.AddForce(Vector3.forward * Time.deltaTime * speedUpstream * forwardInput);
             }
             else
             {
                 speedOfRiver = 3;
-                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+                transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
                 transform.Translate(-Vector3.forward * Time.deltaTime * speedOfRiver, Space.World);
                 //playerRb.AddForce(Vector3.right * Time.deltaTime * speedUpstream * horizontalInput);
             }
