@@ -9,6 +9,8 @@ public class FallingGroundManager : MonoBehaviour
     public GameObject[] fallingGroundsA;
     public GameObject[] fallingGroundsX;
     public GameObject[] fallingGrounds2;
+    public GameObject[] fallingGroundsB;
+    public GameObject[] fallingGroundsY;
     public GameObject[] fallingGrounds3;
     public float fallingSpeed = 1.0f;
     private GameManager gameManager;
@@ -53,6 +55,8 @@ public class FallingGroundManager : MonoBehaviour
                 if (gameManager.timer < 54 - i - 2)
                 {
                     fallingGrounds2[i].GetComponent<Rigidbody>().isKinematic = false;
+                    fallingGroundsB[i].GetComponent<Rigidbody>().isKinematic = false;
+                    fallingGroundsY[i].GetComponent<Rigidbody>().isKinematic = false;
                 }
             }
         }
