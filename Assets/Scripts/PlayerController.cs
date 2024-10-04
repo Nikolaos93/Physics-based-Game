@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // Variables for player movement
+    public GameObject player;
     public float speed = 2.0f;
     public Rigidbody playerRb;
     private float turnSpeed = 25.0f;
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
     public int checkpointReached = 0;
     //private bool checkpointReached2 = false;
     public AudioSource playerAs;
+
+    private float leftShift = 2.25f;
+    private float rightShift = 2.25f;
 
     // Start is called before the first frame update
     void Start()
@@ -66,7 +70,15 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
             // Move the vehicle right(left)
-            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
+            //transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
+            if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && player.transform.position.x != -2.25)
+            {
+                player.transform.position = new Vector3(player.transform.position.x - leftShift, player.transform.position.y, player.transform.position.z);
+            }
+            if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && player.transform.position.x != 2.25)
+            {
+                player.transform.position = new Vector3(player.transform.position.x + rightShift, player.transform.position.y, player.transform.position.z);
+            }
 
             if (Input.GetKeyDown(KeyCode.W) && !playerAs.loop/* && gameManager.isGameActive*/)
             {
