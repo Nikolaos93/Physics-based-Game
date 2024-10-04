@@ -12,6 +12,8 @@ public class FallingGroundManager : MonoBehaviour
     public GameObject[] fallingGroundsB;
     public GameObject[] fallingGroundsY;
     public GameObject[] fallingGrounds3;
+    public GameObject[] fallingGroundsC;
+    public GameObject[] fallingGroundsZ;
     public float fallingSpeed = 1.0f;
     private GameManager gameManager;
 
@@ -69,10 +71,14 @@ public class FallingGroundManager : MonoBehaviour
                 if (playerController.transform.position.z > fallingGrounds3[i].transform.position.z - 1)
                 {
                     fallingGrounds3[i].gameObject.SetActive(true);
+                    fallingGroundsC[i].gameObject.SetActive(true);
+                    fallingGroundsZ[i].gameObject.SetActive(true);
                 }
                 if (playerController.transform.position.z > fallingGrounds3[i].transform.position.z + 1)
                 {
                     fallingGrounds3[i].GetComponent<Rigidbody>().isKinematic = false;
+                    fallingGroundsC[i].GetComponent<Rigidbody>().isKinematic = false;
+                    fallingGroundsZ[i].GetComponent<Rigidbody>().isKinematic = false;
                 }
             }
         }
