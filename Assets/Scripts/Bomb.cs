@@ -30,8 +30,16 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, yCenter + Mathf.PingPong(Time.time * 0.1f, maxHeight) - maxHeight / 2f, transform.position.z);//move on y axis only
-        transform.Rotate(rotateAmount * Time.deltaTime);
+        if (gameObject.tag != "Bomb")
+        {
+            transform.position = new Vector3(transform.position.x, yCenter + Mathf.PingPong(Time.time * 0.1f, maxHeight) - maxHeight / 2f, transform.position.z);//move on y axis only
+            transform.Rotate(rotateAmount * Time.deltaTime);
+        }
+        if (gameObject.tag == "Bomb")
+        {
+            transform.position = new Vector3(transform.position.x, 0.25f + Mathf.PingPong(Time.time * 0.1f, 0.25f) - 0.25f / 2f, transform.position.z);//move on y axis only
+            //transform.Rotate(rotateAmount * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
