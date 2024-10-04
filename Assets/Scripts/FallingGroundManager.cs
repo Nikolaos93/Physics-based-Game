@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class FallingGroundManager : MonoBehaviour
 {
-    public GameObject[] fallingGrounds;
+    public GameObject[] fallingGrounds1;
+    public GameObject[] fallingGroundsA;
+    public GameObject[] fallingGroundsX;
     public GameObject[] fallingGrounds2;
     public GameObject[] fallingGrounds3;
     public float fallingSpeed = 1.0f;
@@ -32,12 +34,14 @@ public class FallingGroundManager : MonoBehaviour
             }
         }*/
 
-        for (int i = 0; i < fallingGrounds.Length - 1; i++)
+        for (int i = 0; i < fallingGrounds1.Length - 1; i++)
         {
             //Debug.Log(gameManager.timer);
-            if (playerController.transform.position.z > fallingGrounds[i].transform.position.z + 1)
+            if (playerController.transform.position.z > fallingGrounds1[i].transform.position.z + 1)
             {
-                fallingGrounds[i].GetComponent<Rigidbody>().isKinematic = false;
+                fallingGrounds1[i].GetComponent<Rigidbody>().isKinematic = false;
+                fallingGroundsA[i].GetComponent<Rigidbody>().isKinematic = false;
+                fallingGroundsX[i].GetComponent<Rigidbody>().isKinematic = false;
             }
         }
 
