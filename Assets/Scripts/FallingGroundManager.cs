@@ -65,7 +65,7 @@ public class FallingGroundManager : MonoBehaviour
 
         if (playerController.checkpointReached == 2)
         {
-            for (int i = 0; i < fallingGrounds3.Length - 1; i++)
+            for (int i = 0; i < fallingGrounds3.Length; i++)
             {
                 //Debug.Log(gameManager.timer);
                 if (playerController.transform.position.z > fallingGrounds3[i].transform.position.z - 1)
