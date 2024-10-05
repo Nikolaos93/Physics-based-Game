@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
                 playerAs.loop = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.F) && isOnGround)
+            if (Input.GetKeyDown(KeyCode.F) && isOnGround && (transform.position.x > 0.5 || transform.position.x < -0.5))
             {
                 playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 isOnGround = false;
