@@ -32,6 +32,11 @@ public class PlayerController : MonoBehaviour
     private float leftShift = 2.25f;
     private float rightShift = 2.25f;
 
+    public bool isOnGround = true;
+    public float jumpForce;
+    public AudioClip jumpSound;
+    private AudioSource playerAudio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +44,8 @@ public class PlayerController : MonoBehaviour
         playerAs.GetComponent<AudioSource>(); // Getting the AudioSource component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager object and get the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
+
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -90,7 +97,14 @@ public class PlayerController : MonoBehaviour
                 playerAs.Stop();
                 playerAs.loop = false;
             }
-            
+
+            if (Input.GetKeyDown(KeyCode.F) && isOnGround)
+            {
+                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isOnGround = false;
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
+            }
+
 
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
@@ -134,6 +148,14 @@ public class PlayerController : MonoBehaviour
             checkpointReached++;
             gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script  
             Debug.Log("Checkpoint Reached: " + checkpointReached);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
         }
     }
 }

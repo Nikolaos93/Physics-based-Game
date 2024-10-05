@@ -16,6 +16,7 @@ TagManager:
   - CubeB
   - Tray4
   - Tray5
+  - Ground
   layers:
   - Default
   - TransparentFX
