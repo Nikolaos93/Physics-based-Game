@@ -1805,6 +1805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1bd53e70a31e1643be6358bf3aa1c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   speed: 2
   playerRb: {fileID: 114868849}
   forwardInput: 0
@@ -1814,6 +1815,9 @@ MonoBehaviour:
   accelerationText: {fileID: 2113809184}
   checkpointReached: 0
   playerAs: {fileID: 0}
+  isOnGround: 1
+  jumpForce: 0
+  jumpSound: {fileID: 0}
 --- !u!135 &114868845
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1946,6 +1950,7 @@ MonoBehaviour:
   velocityText: {fileID: 814610395}
   distanceText: {fileID: 1441903925}
   speedOfRiverText: {fileID: 2113809184}
+  waterSplashParticle: {fileID: 0}
 --- !u!1001 &127556772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7200,7 +7205,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5136231650899946630, guid: 12e4e4ce2c6eb90489d463c52abc50aa,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525858423}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5479860217832420924, guid: 12e4e4ce2c6eb90489d463c52abc50aa,
         type: 3}
@@ -17065,13 +17074,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c0067f1a2b7ba944815c10bd7b5e583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallingGrounds:
-  - {fileID: 625959229}
-  - {fileID: 1160255936}
-  - {fileID: 1081786182}
-  - {fileID: 1214556289}
-  - {fileID: 888836015}
-  - {fileID: 1184393696}
+  fallingGrounds1: []
+  fallingGroundsA: []
+  fallingGroundsX: []
   fallingGrounds2:
   - {fileID: 1506430490}
   - {fileID: 1768684475}
@@ -17083,6 +17088,8 @@ MonoBehaviour:
   - {fileID: 1772253581}
   - {fileID: 355402728}
   - {fileID: 209037077}
+  fallingGroundsB: []
+  fallingGroundsY: []
   fallingGrounds3:
   - {fileID: 737399521}
   - {fileID: 827878584}
@@ -17105,6 +17112,8 @@ MonoBehaviour:
   - {fileID: 1429070432}
   - {fileID: 1423840930}
   - {fileID: 1540479818}
+  fallingGroundsC: []
+  fallingGroundsZ: []
   fallingSpeed: 1
 --- !u!4 &1208153527
 Transform:
@@ -18639,6 +18648,101 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1793676940}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1406358339
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1522608960}
+    m_Modifications:
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.35355186
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.61237335
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.61237335
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.35355186
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -240
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.b
+      value: 0.9150943
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.g
+      value: 0.18745528
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.523159
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.m_ColorSpace
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356800953600124292, guid: fb82dfb8d1c7044c69afd2486befecb3,
+        type: 3}
+      propertyPath: m_Name
+      value: WaterSplatter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4791611851574708811, guid: fb82dfb8d1c7044c69afd2486befecb3,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fb82dfb8d1c7044c69afd2486befecb3, type: 3}
 --- !u!1 &1406756458
 GameObject:
   m_ObjectHideFlags: 0
@@ -20368,6 +20472,7 @@ MonoBehaviour:
   velocityText: {fileID: 814610395}
   distanceText: {fileID: 1441903925}
   speedOfRiverText: {fileID: 2113809184}
+  waterSplashParticle: {fileID: 1571352091}
 --- !u!54 &1522608950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20428,6 +20533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1bd53e70a31e1643be6358bf3aa1c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   speed: 2
   playerRb: {fileID: 1522608950}
   forwardInput: 0
@@ -20437,6 +20543,15 @@ MonoBehaviour:
   accelerationText: {fileID: 2113809184}
   checkpointReached: 0
   playerAs: {fileID: 0}
+  isOnGround: 1
+  jumpForce: 0
+  jumpSound: {fileID: 0}
+--- !u!4 &1522608960 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5136231650899946630, guid: 12e4e4ce2c6eb90489d463c52abc50aa,
+    type: 3}
+  m_PrefabInstance: {fileID: 493153348}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1523337924
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20511,6 +20626,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 666ff701b211d6440b7bd44aa7b3abfa, type: 3}
+--- !u!4 &1525858423 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1419152992, guid: fb82dfb8d1c7044c69afd2486befecb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1406358339}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1529196298
 GameObject:
   m_ObjectHideFlags: 0
@@ -21099,6 +21220,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7607657339160410820, guid: 63f1a65c64c01a84fb5749e816971444,
     type: 3}
   m_PrefabInstance: {fileID: 892032519}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1571352091 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1438565936, guid: fb82dfb8d1c7044c69afd2486befecb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1406358339}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1575783242
 PrefabInstance:

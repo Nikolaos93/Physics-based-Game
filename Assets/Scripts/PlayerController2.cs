@@ -27,6 +27,8 @@ public class PlayerController2 : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI speedOfRiverText;
 
+    public ParticleSystem waterSplashParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +90,14 @@ public class PlayerController2 : MonoBehaviour
                 speed = 10;
                 transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
             }*/
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                waterSplashParticle.Play();
+            }
+            else if (Input.GetKeyUp(KeyCode.W)) 
+            {
+                waterSplashParticle.Stop();
+            }
             
 
             // Move the vehicle right(left)

@@ -29,6 +29,8 @@ public class PlayerController3 : MonoBehaviour
 
     public int checkpointReached = 0;
 
+    public ParticleSystem waterSplashParticle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -146,6 +148,14 @@ public class PlayerController3 : MonoBehaviour
                 transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self);
             }
 
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                waterSplashParticle.Play();
+            }
+            else if (Input.GetKeyUp(KeyCode.W))
+            {
+                waterSplashParticle.Stop();
+            }
 
             // Move the vehicle right(left)
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
