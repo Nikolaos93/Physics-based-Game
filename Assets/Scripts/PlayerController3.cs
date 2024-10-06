@@ -30,6 +30,7 @@ public class PlayerController3 : MonoBehaviour
     public int checkpointReached = 0;
 
     public ParticleSystem waterSplashParticle;
+    private AudioSource playerAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,7 @@ public class PlayerController3 : MonoBehaviour
         lastPosition = transform.position; // Set the last position of the player to the starting position
 
         speedUpstream = speed - speedOfRiver; // ??
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -151,10 +153,14 @@ public class PlayerController3 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 waterSplashParticle.Play();
+                playerAudio.loop = true;
+                playerAudio.Play();
             }
             else if (Input.GetKeyUp(KeyCode.W))
             {
                 waterSplashParticle.Stop();
+                playerAudio.Stop();
+                playerAudio.loop = false;
             }
 
             // Move the vehicle right(left)

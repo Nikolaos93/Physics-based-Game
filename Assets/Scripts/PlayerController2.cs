@@ -28,6 +28,8 @@ public class PlayerController2 : MonoBehaviour
     public TextMeshProUGUI speedOfRiverText;
 
     public ParticleSystem waterSplashParticle;
+    //public AudioClip jetSkiEngineSound;
+    private AudioSource playerAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,8 @@ public class PlayerController2 : MonoBehaviour
         lastPosition = transform.position; // Set the last position of the player to the starting position
 
         speedUpstream = speed - speedOfRiver;
+
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -93,10 +97,14 @@ public class PlayerController2 : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 waterSplashParticle.Play();
+                playerAudio.loop = true;
+                playerAudio.Play();
             }
             else if (Input.GetKeyUp(KeyCode.W)) 
             {
                 waterSplashParticle.Stop();
+                playerAudio.Stop();
+                playerAudio.loop = false;
             }
             
 
