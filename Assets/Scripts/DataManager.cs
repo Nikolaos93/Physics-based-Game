@@ -9,6 +9,8 @@ public class DataManager : MonoBehaviour
     public static DataManager Instance;
 
     public int scoreOverall;
+    public int maxLives;
+    public int livesLeft;
 
     private void Awake()
     {

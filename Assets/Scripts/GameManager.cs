@@ -96,6 +96,8 @@ public class GameManager : MonoBehaviour
         } else
         {
             score = 0;
+            DataManager.Instance.maxLives = 3;
+            DataManager.Instance.livesLeft = 3;
         }
 
         if (SceneManager.GetActiveScene().name == "Level 5")
@@ -206,16 +208,26 @@ public class GameManager : MonoBehaviour
 
     public void GameOver() // This method will be called when the timer reaches 0
     {
-        ScoreManager.instance.HighScoreCheck(score);
-        gameOverScreen.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
-        gameOverText.gameObject.SetActive(true);
-        isGameActive = false;
+        if (DataManager.Instance.livesLeft != 1)
+        {
+            DataManager.Instance.livesLeft--;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        else if (DataManager.Instance.livesLeft == 1)
+        {
+            ScoreManager.instance.HighScoreCheck(score);
+            gameOverScreen.gameObject.SetActive(true);
+            restartButton.gameObject.SetActive(true);
+            gameOverText.gameObject.SetActive(true);
+            isGameActive = false;
+        }  
     }
 
     public void RestartGame() // This method will be called when the player clicks the "Restart" button
     {
         DataManager.Instance.scoreOverall = 0;
+        DataManager.Instance.maxLives = 3;
+        DataManager.Instance.livesLeft = 3;
         SceneManager.LoadScene(0);
     }
 
