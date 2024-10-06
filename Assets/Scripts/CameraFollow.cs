@@ -8,7 +8,7 @@ public class CameraFollow : MonoBehaviour
     public GameObject player;  // Reference to the player object (ball/point/vehicle)
     private Vector3 offset = new Vector3(0, 5, -7); // offset the camera behind the player by adding to the player's position
     private Vector3 offset2 = new Vector3(0, 7, -14);
-    private Vector3 offsetFront = new Vector3(0, 2.25f, 1); //offset the camera (1st person)
+    private Vector3 offsetFront = new Vector3(0, 2.25f, -0.5f); //offset the camera (1st person)
 
     private bool cameraClicked = false; // this is a flag to check if the camera button/switch has been clicked
 

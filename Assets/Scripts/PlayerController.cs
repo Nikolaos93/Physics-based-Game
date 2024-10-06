@@ -86,6 +86,14 @@ public class PlayerController : MonoBehaviour
             {
                 player.transform.position = new Vector3(player.transform.position.x + rightShift, player.transform.position.y, player.transform.position.z);
             }
+            if (player.transform.position.x < -2.25)
+            {
+                player.transform.position = new Vector3(-2.25f, player.transform.position.y, player.transform.position.z); ;
+            }
+            if (player.transform.position.x > 2.25)
+            {
+                player.transform.position = new Vector3(2.25f, player.transform.position.y, player.transform.position.z); ;
+            }
 
             if (Input.GetKeyDown(KeyCode.W) && !playerAs.loop/* && gameManager.isGameActive*/)
             {

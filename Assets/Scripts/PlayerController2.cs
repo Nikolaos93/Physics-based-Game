@@ -116,6 +116,13 @@ public class PlayerController2 : MonoBehaviour
             lastPosition = transform.position; // Updates the last position to the current position
         }
 
+        if (!gameManager.isGameActive)
+        {
+            waterSplashParticle.Stop();
+            playerAudio.Stop();
+            playerAudio.loop = false;
+        }
+
         playerValues(); // Calls the playerValues method to display the player's stats
     }
 
