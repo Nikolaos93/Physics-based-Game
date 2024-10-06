@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI levelResultsText;
     public TextMeshProUGUI pauseText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI lifeLostText;
+
 
     /*public TextMeshProUGUI finalScoreText;
     public TextMeshProUGUI highScoreText;*/
@@ -28,6 +30,8 @@ public class GameManager : MonoBehaviour
     public Button continueButton;
     public Button leaveButton;
     public Button restartButton;
+    public Button quitButton;
+    public Button resumeButton;
 
     public Button proceedButton;
 
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
     public GameObject levelFinishedScreen;
     public GameObject statsScreen;
     public GameObject gameOverScreen;
+    public GameObject lifeLostScreen;
 
     public GameObject checkpointScreen;
 
@@ -210,8 +215,11 @@ public class GameManager : MonoBehaviour
     {
         if (DataManager.Instance.livesLeft != 1)
         {
-            DataManager.Instance.livesLeft--;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            isGameActive = false;
+            lifeLostScreen.gameObject.SetActive(true);
+            lifeLostText.gameObject.SetActive(true);
+            quitButton.gameObject.SetActive(true);
+            resumeButton.gameObject.SetActive(true);
         }
         else if (DataManager.Instance.livesLeft == 1)
         {
@@ -229,6 +237,13 @@ public class GameManager : MonoBehaviour
         DataManager.Instance.maxLives = 3;
         DataManager.Instance.livesLeft = 3;
         SceneManager.LoadScene(0);
+    }
+
+    public void ReloadCurrentLevel()
+    {
+        DataManager.Instance.livesLeft--;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //StartGame();
     }
 
     public void LoadNextLevel() // This method will be called when the player clicks the "Restart" button
