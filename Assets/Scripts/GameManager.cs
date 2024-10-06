@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
     public void ReloadCurrentLevel()
     {
         DataManager.Instance.livesLeft--;
+        //DataManager.Instance.scoreOverall = score;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //StartGame();
     }
