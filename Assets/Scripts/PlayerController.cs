@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     public float speed = 2.0f;
     public Rigidbody playerRb;
-    private float turnSpeed = 25.0f;
+    //private float turnSpeed = 25.0f;
     private float horizontalInput;
     public float forwardInput;
 

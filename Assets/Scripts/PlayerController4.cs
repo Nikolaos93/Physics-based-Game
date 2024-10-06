@@ -7,10 +7,11 @@ using UnityEngine;
 public class PlayerController4 : MonoBehaviour
 {
     // Variables for player movement
+    public GameObject player;
     public float speed = 0f;
     public float acceleration = 1.0f; 
     public Rigidbody playerRb;
-    private float turnSpeed = 25.0f;
+    //private float turnSpeed = 25.0f;
     private float horizontalInput;
     private float forwardInput;
 
@@ -28,13 +29,25 @@ public class PlayerController4 : MonoBehaviour
     //public GameObject cube; // ???
     public int checkpointReached = 0;
     private float maxSpeed = 35.0f;
+    public AudioSource playerAs;
+
+    private float leftShift = 2.25f;
+    private float rightShift = 2.25f;
+
+    public bool isOnGround = true;
+    public float jumpForce;
+    public AudioClip jumpSound;
+    private AudioSource playerAudio;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>(); // Getting the Rigidbody component from the player object
+        playerAs.GetComponent<AudioSource>(); // Getting the AudioSource component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager object and get the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
+
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -72,18 +85,59 @@ public class PlayerController4 : MonoBehaviour
             //transform.position.x = transform.position.x + speed * Time.deltaTime;
 
             // Move the vehicle right(left)
-            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
+            //transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
+
+            if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && player.transform.position.x != -2.25)
+            {
+                player.transform.position = new Vector3(player.transform.position.x - leftShift, player.transform.position.y, player.transform.position.z);
+            }
+            if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && player.transform.position.x != 2.25)
+            {
+                player.transform.position = new Vector3(player.transform.position.x + rightShift, player.transform.position.y, player.transform.position.z);
+            }
+            if (player.transform.position.x < -2.25)
+            {
+                player.transform.position = new Vector3(-2.25f, player.transform.position.y, player.transform.position.z); ;
+            }
+            if (player.transform.position.x > 2.25)
+            {
+                player.transform.position = new Vector3(2.25f, player.transform.position.y, player.transform.position.z); ;
+            }
+
+            if (Input.GetKeyDown(KeyCode.W) && !playerAs.loop/* && gameManager.isGameActive*/)
+            {
+                playerAs.loop = true;
+                playerAs.Play();
+            }
+            else if (Input.GetKeyUp(KeyCode.W) && playerAs.loop)
+            {
+                playerAs.Stop();
+                playerAs.loop = false;
+            }
+
+            if (Input.GetKeyDown(KeyCode.F) && isOnGround && (transform.position.x > 0.5 || transform.position.x < -0.5))
+            {
+                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                isOnGround = false;
+                playerAudio.PlayOneShot(jumpSound, 1.0f);
+            }
 
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
             lastPosition = transform.position; // Updates the last position to the current position
         }
 
+        if (!gameManager.isGameActive)
+        {
+            playerAs.Stop();
+            playerAs.loop = false;
+        }
+
         playerValues(); // Calls the playerValues method to display the player's stats
 
-        if (gameManager.timer <= 55)
+        if (transform.position.y < 0)
         {
-            //cube.SetActive(true);
+            gameManager.GameOver(); // If the player falls off the platform, then the game is over
         }
     }
 
@@ -108,6 +162,14 @@ public class PlayerController4 : MonoBehaviour
             checkpointReached++;
             gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script  
             Debug.Log("Checkpoint Reached: " + checkpointReached);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isOnGround = true;
         }
     }
 }
