@@ -8,9 +8,8 @@ public class PlayerController : MonoBehaviour
 {
     // Variables for player movement
     public GameObject player;
-    public float speed = 2.0f;
     public Rigidbody playerRb;
-    //private float turnSpeed = 25.0f;
+    public float speed = 2.0f;
     private float horizontalInput;
     public float forwardInput;
 
@@ -25,17 +24,16 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI accelerationText;
 
-    public int checkpointReached = 0;
-    //private bool checkpointReached2 = false;
-    public AudioSource playerAs;
+    public int checkpointReached = 0; // Counter for number of reached checkpoints in the level
+    public AudioSource playerAs; // Reference to the audio source attached to the player
 
-    private float leftShift = 2.25f;
-    private float rightShift = 2.25f;
+    private float leftShift = 2.25f; // Constant amount for instanteinously shifting to the lane on the left
+    private float rightShift = 2.25f; // Constant amount for instanteinously shifting to the lane on the right
 
-    public bool isOnGround = true;
-    public float jumpForce;
-    public AudioClip jumpSound;
-    private AudioSource playerAudio;
+    public bool isOnGround = true; // Checking whether the player is touching the ground to prevent double jumping (jumping mid-air)
+    public float jumpForce; // Force that will be applied when the player triggers jump
+    public AudioClip jumpSound; // Sound that will be played once when the player jumps
+    private AudioSource playerAudio; // ??
 
     // Start is called before the first frame update
     void Start()
@@ -51,13 +49,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (gameManager.isGameActive) // If the game is active, then the player can move
-        {
-            float forwardInput = Input.GetAxis("Vertical");
-            float horizontalInput = Input.GetAxis("Horizontal");
-            playerRb.AddForce(Vector3.forward * speed * forwardInput);
-            playerRb.AddForce(Vector3.right * speed * horizontalInput);
-        }*/
 
         if (gameManager.isGameActive) // If the game is active, then the player can move
         {
@@ -77,7 +68,6 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
 
             // Move the vehicle right(left)
-            //transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
             if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && player.transform.position.x != -2.25)
             {
                 player.transform.position = new Vector3(player.transform.position.x - leftShift, player.transform.position.y, player.transform.position.z);
@@ -159,11 +149,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision) //checking whether the player is touching ground (in order to prevent double jumping)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isOnGround = true;
+            isOnGround = true; //Setting to true if touching the ground is detected
         }
     }
 }
