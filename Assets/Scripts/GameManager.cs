@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject checkpointScreen;
 
+    public GameObject life1, life2, life3;
+
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +92,25 @@ public class GameManager : MonoBehaviour
         }*/
         
         CountdownTimer();
+
+        switch (DataManager.Instance.livesLeft)
+        {
+            case 2:
+                life3.SetActive(false);
+                break;
+            case 1:
+                life3.SetActive(false);
+                life2.SetActive(false);
+                break;
+            case 0:
+                life3.SetActive(false);
+                life2.SetActive(false);
+                life1.SetActive(false);
+                break;
+        }
+        /*if (DataManager.Instance.livesLeft == 2) life3.SetActive(false);
+        if (DataManager.Instance.livesLeft == 1) life2.SetActive(false);
+        if (DataManager.Instance.livesLeft == 0) life1.SetActive(false);*/
     }
 
     public void StartGame() // This method will be called when the player clicks the "Play" button
@@ -242,6 +263,11 @@ public class GameManager : MonoBehaviour
     public void ReloadCurrentLevel()
     {
         DataManager.Instance.livesLeft--;
+        /*if (DataManager.Instance.livesLeft == 2) life3.SetActive(false);
+        if (DataManager.Instance.livesLeft == 1) life2.SetActive(false);
+        if (DataManager.Instance.livesLeft == 0) life1.SetActive(false);*/
+
+
         //DataManager.Instance.scoreOverall = score;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //StartGame();
