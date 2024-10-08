@@ -45459,7 +45459,6 @@ GameObject:
   - component: {fileID: 1899240366}
   - component: {fileID: 1899240365}
   - component: {fileID: 1899240364}
-  - component: {fileID: 1899240368}
   m_Layer: 5
   m_Name: Main Menu
   m_TagString: Untagged
@@ -45554,49 +45553,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1899240368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1899240363}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdec7ac8db5db4e4685e764fee6a926c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  timerCountdownText: {fileID: 0}
-  levelCompleteText: {fileID: 0}
-  levelResultsText: {fileID: 0}
-  pauseText: {fileID: 0}
-  gameOverText: {fileID: 0}
-  lifeLostText: {fileID: 0}
-  checkpointText: {fileID: 0}
-  checkpointAdviceText: {fileID: 0}
-  checkpointAdvice2Text: {fileID: 0}
-  nextLevelButton: {fileID: 0}
-  continueButton: {fileID: 0}
-  leaveButton: {fileID: 0}
-  restartButton: {fileID: 0}
-  quitButton: {fileID: 0}
-  resumeButton: {fileID: 0}
-  proceedButton: {fileID: 0}
-  timer: 0
-  isGameActive: 0
-  hintClicks: 0
-  highscoreText: {fileID: 0}
-  titleScreen: {fileID: 0}
-  pauseScreen: {fileID: 0}
-  levelFinishedScreen: {fileID: 0}
-  statsScreen: {fileID: 0}
-  gameOverScreen: {fileID: 0}
-  lifeLostScreen: {fileID: 0}
-  checkpointScreen: {fileID: 0}
-  life1: {fileID: 0}
-  life2: {fileID: 0}
-  life3: {fileID: 0}
 --- !u!1001 &1900168632
 PrefabInstance:
   m_ObjectHideFlags: 0

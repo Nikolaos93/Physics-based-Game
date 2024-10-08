@@ -5,24 +5,23 @@ using UnityEngine;
 public class ArrowVectors4 : MonoBehaviour
 {
     public GameObject player;  // Reference to the player object (ball/point/vehicle)
-    private PlayerController4 playerController4;
-    private Vector3 offset = new Vector3(0, -5, 0); // offset the camera behind the player by adding to the player's position
-    //private Vector3 offsetFront = new Vector3(0, 2.25f, 1); //offset the camera (1st person)
+    private PlayerController4 playerController4; // Reference to the PlayerController4 script
+    private Vector3 offset = new Vector3(0, -5, 0); // offset the vector above the player by adding to the player's position
 
-    private Vector3 vectorMagnitude;
+    private Vector3 vectorMagnitude; // Variable that will scale the magnitude of the vector
 
     // Start is called before the first frame update
     void Start()
     {
-        playerController4 = GameObject.Find("Player").GetComponent<PlayerController4>();
-        vectorMagnitude = transform.localScale;
+        playerController4 = GameObject.Find("Player").GetComponent<PlayerController4>(); // Finding Player game object and its component script
+        vectorMagnitude = transform.localScale; // Initital scale/magnitude of the vector arrow
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + offset;
-        transform.rotation = player.transform.rotation;
-        transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController4.acceleration * 0.8f));
+        transform.position = player.transform.position + offset; // Updating the position of the vector arrow by adding the offset to the player's position
+        transform.rotation = player.transform.rotation; // Updating the rotation of the vector so that it matches the orientation/direction of the player
+        transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController4.acceleration * 0.8f)); // Scaling the vector by appropriate magnitude (in terms of acceleration)
     }
 }

@@ -61,18 +61,18 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.LeftControl) && speed > 0 && checkpointReached > 0)
             {
-                speed--; // Decrementing speed if LCtrl is pressed, 1st checkpoint is passed and speed is greater thaan 0m/s
+                speed--; // Decrementing speed if LCtrl is pressed, 1st checkpoint is passed and speed is greater than 0m/s
             }
 
-            // Move the vehicle forward
+            // Move the player forward
             transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput); // Translating the player forward at constant speed/velocity 
 
-            // Move the vehicle right(left)
+            // Move the player right(left)
             if ((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow)) && player.transform.position.x != -2.25) // Checking whether player wants to move to the left and if the player is not in the left lane
             {
                 player.transform.position = new Vector3(player.transform.position.x - leftShift, player.transform.position.y, player.transform.position.z); // Moving the player 1 lane to the left
             }
-            if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && player.transform.position.x != 2.25) // Checking whether player wants to move to the right and if the player is not the right lane
+            if ((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow)) && player.transform.position.x != 2.25) // Checking whether player wants to move to the right and if the player is not in the right lane
             {
                 player.transform.position = new Vector3(player.transform.position.x + rightShift, player.transform.position.y, player.transform.position.z); // Moving the player 1 lane to the right
             }
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
         playerValues(); // Calls the playerValues method to display the player's stats
 
-        if (transform.position.y < 0) //Checking whether the pllayer has fallen below the ground level
+        if (transform.position.y < 0) //Checking whether the player has fallen below the ground level
         {
             gameManager.GameOver(); // If the player falls off the platform, then the game is over
         }
@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground")) // Checking if the player is touching the object with the tag "Ground"
         {
-            isOnGround = true; //Setting to true if touching the ground is detected
+            isOnGround = true; // Setting to true if touching the ground is detected
         }
     }
 }

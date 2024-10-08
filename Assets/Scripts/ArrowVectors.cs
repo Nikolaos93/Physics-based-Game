@@ -13,7 +13,7 @@ public class ArrowVectors : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>(); // Finding Player game object its component script
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>(); // Finding Player game object and its component script
         vectorMagnitude = transform.localScale; // Initital scale/magnitude of the vector arrow
     }
 
@@ -22,6 +22,6 @@ public class ArrowVectors : MonoBehaviour
     {
         transform.position = player.transform.position + offset; // Updating the position of the vector arrow by adding the offset to the player's position
         transform.rotation = player.transform.rotation; // Updating the rotation of the vector so that it matches the orientation/direction of the player
-        transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController.speed * 0.4f)); // Scaling the vector by appropriate magnitude
+        transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController.speed * 0.4f)); // Scaling the vector by appropriate magnitude (in terms of vellocity)
     }
 }
