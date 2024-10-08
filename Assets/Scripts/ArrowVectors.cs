@@ -5,24 +5,23 @@ using UnityEngine;
 public class ArrowVectors : MonoBehaviour
 {
     public GameObject player;  // Reference to the player object (ball/point/vehicle)
-    private PlayerController playerController;
-    private Vector3 offset = new Vector3(0, -5, 0); // offset the camera behind the player by adding to the player's position
-    //private Vector3 offsetFront = new Vector3(0, 2.25f, 1); //offset the camera (1st person)
+    private PlayerController playerController; // Reference to the PlayerController script
+    private Vector3 offset = new Vector3(0, -5, 0); // offset the vector above the player by adding to the player's position
 
-    private Vector3 vectorMagnitude;
+    private Vector3 vectorMagnitude; // Variable that will scale the magnitude of the vector
 
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GameObject.Find("Player").GetComponent<PlayerController>();
-        vectorMagnitude = transform.localScale;
+        playerController = GameObject.Find("Player").GetComponent<PlayerController>(); // Finding Player game object its component script
+        vectorMagnitude = transform.localScale; // Initital scale/magnitude of the vector arrow
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = player.transform.position + offset;
-        transform.rotation = player.transform.rotation;
-        transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController.speed * 0.4f));
+        transform.position = player.transform.position + offset; // Updating the position of the vector arrow by adding the offset to the player's position
+        transform.rotation = player.transform.rotation; // Updating the rotation of the vector so that it matches the orientation/direction of the player
+        transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController.speed * 0.4f)); // Scaling the vector by appropriate magnitude
     }
 }
