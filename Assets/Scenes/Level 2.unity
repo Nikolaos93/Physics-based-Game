@@ -1806,8 +1806,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 2
   playerRb: {fileID: 114868849}
+  speed: 2
   forwardInput: 0
   totalDistance: 0
   velocityText: {fileID: 814610395}
@@ -18016,7 +18016,6 @@ MonoBehaviour:
   - {fileID: 1540479818}
   fallingGroundsC: []
   fallingGroundsZ: []
-  fallingSpeed: 1
 --- !u!4 &1208153527
 Transform:
   m_ObjectHideFlags: 0
@@ -21692,8 +21691,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 2
   playerRb: {fileID: 1522608950}
+  speed: 2
   forwardInput: 0
   totalDistance: 0
   velocityText: {fileID: 814610395}
@@ -29050,6 +29049,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finish
       objectReference: {fileID: 0}
+    - target: {fileID: 1320582576396556360, guid: 115e2abeb24fa574fab10e1db01eae7e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c87d37d6be92de04183cf6a3b1f96985, type: 2}
     - target: {fileID: 6052914807360227481, guid: 115e2abeb24fa574fab10e1db01eae7e,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -29063,7 +29067,7 @@ PrefabInstance:
     - target: {fileID: 6052914807360227481, guid: 115e2abeb24fa574fab10e1db01eae7e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6052914807360227481, guid: 115e2abeb24fa574fab10e1db01eae7e,
         type: 3}

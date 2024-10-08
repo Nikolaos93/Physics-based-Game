@@ -3663,8 +3663,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 2
   playerRb: {fileID: 114868849}
+  speed: 2
   forwardInput: 0
   totalDistance: 0
   velocityText: {fileID: 814610395}
@@ -11740,8 +11740,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 416956945}
-  speed: 2
   playerRb: {fileID: 416956948}
+  speed: 2
   forwardInput: 0
   totalDistance: 0
   velocityText: {fileID: 0}
@@ -13517,7 +13517,6 @@ MonoBehaviour:
   - {fileID: 1860066239}
   - {fileID: 953870821}
   - {fileID: 375842848}
-  fallingSpeed: 1
 --- !u!4 &456402081
 Transform:
   m_ObjectHideFlags: 0
@@ -33603,6 +33602,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5803689737649495451, guid: ee10bc00b35c64842bab7e72bfe8743f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c87d37d6be92de04183cf6a3b1f96985, type: 2}
     - target: {fileID: 8277562570691902989, guid: ee10bc00b35c64842bab7e72bfe8743f,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -35214,7 +35218,6 @@ MonoBehaviour:
   - {fileID: 1540479818}
   fallingGroundsC: []
   fallingGroundsZ: []
-  fallingSpeed: 1
 --- !u!4 &1208153527
 Transform:
   m_ObjectHideFlags: 0
@@ -46937,6 +46940,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Finish
       objectReference: {fileID: 0}
+    - target: {fileID: 1320582576396556360, guid: 115e2abeb24fa574fab10e1db01eae7e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c87d37d6be92de04183cf6a3b1f96985, type: 2}
     - target: {fileID: 5929832753541804100, guid: 115e2abeb24fa574fab10e1db01eae7e,
         type: 3}
       propertyPath: m_Enabled
@@ -48453,6 +48461,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Checkpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 5803689737649495451, guid: ee10bc00b35c64842bab7e72bfe8743f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c87d37d6be92de04183cf6a3b1f96985, type: 2}
     - target: {fileID: 8277562570691902989, guid: ee10bc00b35c64842bab7e72bfe8743f,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -57995,9 +58008,9 @@ SceneRoots:
   - {fileID: 1759483146}
   - {fileID: 1781610320}
   - {fileID: 416956952}
-  - {fileID: 1699611779}
   - {fileID: 1768789480}
   - {fileID: 1141286728}
+  - {fileID: 1699611779}
   - {fileID: 1485751898}
   - {fileID: 1899240367}
   - {fileID: 1140385429}
