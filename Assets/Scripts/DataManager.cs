@@ -12,6 +12,7 @@ public class DataManager : MonoBehaviour
     public int maxLives;
     public int livesLeft;
     public bool isMusicEnabled;
+    public float ambientMusicVolume;
 
     private void Awake()
     {

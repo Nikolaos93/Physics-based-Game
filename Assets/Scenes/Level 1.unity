@@ -9613,6 +9613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ambientMusic: {fileID: 330585549}
   musicToggle: {fileID: 1529196300}
+  ambientMusicSlider: {fileID: 931577382}
 --- !u!1 &338096654
 GameObject:
   m_ObjectHideFlags: 0
@@ -24004,7 +24005,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 330585549}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: set_volume
         m_Mode: 0
@@ -36687,19 +36688,7 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1963552585}
-        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
-        m_MethodName: musicEnabler
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
 --- !u!1 &1535360192
 GameObject:
@@ -47308,6 +47297,7 @@ MonoBehaviour:
   maxLives: 3
   livesLeft: 3
   isMusicEnabled: 1
+  ambientMusicVolume: 0.3
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ public class AmbientMusic : MonoBehaviour
     private GameManager gameManager; // Reference to the GameManager
     //public DataManager dataManager;
     public Toggle musicToggle;
+    public Slider ambientMusicSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,9 @@ public class AmbientMusic : MonoBehaviour
         {
             musicToggle.isOn = false;
         }
+
+        ambientMusicSlider.value = DataManager.Instance.ambientMusicVolume;
+        ambientMusic.volume = DataManager.Instance.ambientMusicVolume;
 
     }
 
@@ -43,11 +47,14 @@ public class AmbientMusic : MonoBehaviour
             ambientMusic.enabled = false;
         }
 
+        DataManager.Instance.ambientMusicVolume = ambientMusicSlider.value;
+        ambientMusic.volume = ambientMusicSlider.value;
+
         /*if (dataManager.isMusicEnabled)
         {
             ambientMusic.enabled = true;*/
 
-            if (gameManager.isGameActive) // Checking whether the game is active
+        if (gameManager.isGameActive) // Checking whether the game is active
             {
                 ambientMusic.UnPause(); // Play the music if the game is active
             }

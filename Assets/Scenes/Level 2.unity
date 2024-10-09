@@ -4895,8 +4895,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ambientMusic: {fileID: 330585550}
-  dataManager: {fileID: 1963552585}
   musicToggle: {fileID: 1529196300}
+  ambientMusicSlider: {fileID: 931577382}
 --- !u!82 &330585550
 AudioSource:
   m_ObjectHideFlags: 0
@@ -27471,7 +27471,8 @@ MonoBehaviour:
   scoreOverall: 0
   maxLives: 3
   livesLeft: 3
-  isMusicEnabled: 0
+  isMusicEnabled: 1
+  ambientMusicVolume: 0.3
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0

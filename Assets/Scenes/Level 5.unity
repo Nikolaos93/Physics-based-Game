@@ -5476,6 +5476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ambientMusic: {fileID: 330585549}
   musicToggle: {fileID: 1529196300}
+  ambientMusicSlider: {fileID: 931577382}
 --- !u!1001 &331936436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32062,7 +32063,8 @@ MonoBehaviour:
   scoreOverall: 0
   maxLives: 3
   livesLeft: 3
-  isMusicEnabled: 0
+  isMusicEnabled: 1
+  ambientMusicVolume: 0.3
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0

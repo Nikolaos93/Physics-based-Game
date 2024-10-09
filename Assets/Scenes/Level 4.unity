@@ -30504,7 +30504,8 @@ MonoBehaviour:
   scoreOverall: 0
   maxLives: 3
   livesLeft: 3
-  isMusicEnabled: 0
+  isMusicEnabled: 1
+  ambientMusicVolume: 0.3
 --- !u!4 &1064169650
 Transform:
   m_ObjectHideFlags: 0
@@ -45973,6 +45974,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ambientMusic: {fileID: 1632922777}
   musicToggle: {fileID: 1529196300}
+  ambientMusicSlider: {fileID: 931577382}
 --- !u!1 &1660435869
 GameObject:
   m_ObjectHideFlags: 0
@@ -53639,6 +53641,7 @@ MonoBehaviour:
   maxLives: 0
   livesLeft: 0
   isMusicEnabled: 0
+  ambientMusicVolume: 0
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0
