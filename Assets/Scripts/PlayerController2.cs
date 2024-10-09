@@ -27,7 +27,7 @@ public class PlayerController2 : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI speedOfRiverText;
 
-    public ParticleSystem waterSplashParticle; // Reference to the particle system (child component of the player)
+    public ParticleSystem waterSplashParticle; // Reference to the particle system (child object of the player)
     private AudioSource playerAudio; // Reference to the audio source attached to the player
 
     // Start is called before the first frame update

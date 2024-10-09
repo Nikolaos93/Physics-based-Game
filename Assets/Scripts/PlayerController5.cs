@@ -7,9 +7,9 @@ using UnityEngine;
 public class PlayerController5 : MonoBehaviour
 {
     // Variables for player movement
-    public float speed = 2.0f;
     public Rigidbody playerRb;
-    private float turnSpeed = 25.0f;
+    public float speed = 2.0f; // Initital speed/velocity of the player
+    private float turnSpeed = 25.0f; // Rotation speed of the player
     private float horizontalInput;
     private float forwardInput;
 
@@ -25,57 +25,50 @@ public class PlayerController5 : MonoBehaviour
     public TextMeshProUGUI accelerationText;
 
     public int checkpointReached = 0;
-    //private bool checkpointReached2 = false;
 
+    // Varaiables for checking whether specific tray has the required object on it
     public bool tray1 = false;
     public bool tray2 = false;
     public bool tray3 = false;
     public bool tray4 = false;
     public bool tray5 = false;
 
-    private GameObject gate1;
-    private GameObject gate2;
+    private GameObject gate1; // Gate that opens after the 1st stage is complete 
+    private GameObject gate2; // gate that opens after the 2nd stage is complete
 
     // Start is called before the first frame update
     void Start()
     {
         playerRb = GetComponent<Rigidbody>(); // Getting the Rigidbody component from the player object
-        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager object and get the GameManager script from it
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager and getting the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
-        gate1 = GameObject.Find("Gate1");
-        gate2 = GameObject.Find("Gate2");
+        gate1 = GameObject.Find("Gate1"); // Assigning "Gate 1" game object
+        gate2 = GameObject.Find("Gate2"); // Assigning "Gate 2" game object
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if (gameManager.isGameActive) // If the game is active, then the player can move
-        {
-            float forwardInput = Input.GetAxis("Vertical");
-            float horizontalInput = Input.GetAxis("Horizontal");
-            playerRb.AddForce(Vector3.forward * speed * forwardInput);
-            playerRb.AddForce(Vector3.right * speed * horizontalInput);
-        }*/
 
         if (gameManager.isGameActive) // If the game is active, then the player can move
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            forwardInput = Input.GetAxis("Vertical");
+            horizontalInput = Input.GetAxis("Horizontal"); // Getting horizontal input
+            forwardInput = Input.GetAxis("Vertical"); // Getting vertical input
 
             if (Input.GetKeyDown(KeyCode.Space) && speed < 10 && checkpointReached > 0)
             {
-                speed++;
+                speed++; // Incrementing speed if Space is pressed and speed is less than 10m/s
             }
             if (Input.GetKeyDown(KeyCode.LeftControl) && speed > 0 && checkpointReached > 0)
             {
-                speed--;
+                speed--; // Decrementing speed if LCtrl is pressed and speed is greater than 0m/s
             }
 
-            // Move the vehicle forward
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
+            // Move the player forward
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput); // Translating the player forward at constant speed/velocity
 
-            // Move the vehicle right(left)
-            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Replaces the above line
+            // Move/rotate the player right(left)
+            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Rotating the player based on turnSpeed variable and horizontal input
 
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
@@ -84,26 +77,26 @@ public class PlayerController5 : MonoBehaviour
 
         playerValues(); // Calls the playerValues method to display the player's stats
 
-        if (transform.position.y < 0)
+        if (transform.position.y < 0) //Checking whether the player has fallen below the ground level
         {
             gameManager.GameOver(); // If the player falls off the platform, then the game is over
         }
 
-        if (tray1 && tray2 && tray3)
+        if (tray1 && tray2 && tray3) // Checking if all 3 trays (1st stage) have appropriate objects on them
         {
-            gate1.SetActive(false);
+            gate1.SetActive(false); // Disabling/opening the 1st gate
         }
-        if (tray4 && tray5)
+        if (tray4 && tray5) // Checking if both trays (2nd stage) have appropriate objects on them
         {
-            gate2.SetActive(false);
+            gate2.SetActive(false); // Disabling/opening the 2nd gate
         }
     }
 
-    private void playerValues() // This method will display the player's stats (e.g. velocity, distance, acceleration...) on the screen
+    private void playerValues() // This method will display the player's stats on the screen
     {
-        velocityText.text = "Velocity: " + (int)speed + "[m/s]";
-        distanceText.text = "Distance: " + (int)totalDistance + "[m]";
-        accelerationText.text = "Acceler: " + 0 + "[m/s^2]";
+        velocityText.text = "Velocity: " + (int)speed + "[m/s]"; // Displaying player's velocity on the screen
+        distanceText.text = "Distance: " + (int)totalDistance + "[m]"; // Displaying distance the player has covered on the screen 
+        accelerationText.text = "Acceler: " + 0 + "[m/s^2]"; // Displaying player's acceleration on screen (important to show that there is no acceleration during uniform motion)
     }
 
     private void OnTriggerEnter(Collider other) // This method will be called when the player collides with another object (e.g. the finish line)
@@ -112,14 +105,14 @@ public class PlayerController5 : MonoBehaviour
         {
             gameManager.LevelComplete(); // Call the LevelComplete method from the GameManager script
             //transform.position = new Vector3(0, 0.5f, 0); // Reset the player's position to the starting position
-            Debug.Log("Level Finished");
+            //Debug.Log("Level Finished");
         }
 
-        if (other.CompareTag("Checkpoint")) // If the player collides with an object that has the tag "Finish", then the level is complete
+        if (other.CompareTag("Checkpoint")) // If the player collides with an object that has the tag "Checkpoint", then the checkpoint has been reached
         {
-            checkpointReached++;
-            gameManager.CheckpointReached(); // Call the LevelComplete method from the GameManager script  
-            Debug.Log("Checkpoint Reached: " + checkpointReached);
+            checkpointReached++; // Incrementing the counter of checkpoints
+            gameManager.CheckpointReached(); // Call the CheckpointReached method from the GameManager script  
+            //Debug.Log("Checkpoint Reached: " + checkpointReached);
         }
     }
 }
