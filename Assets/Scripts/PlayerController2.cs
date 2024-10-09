@@ -96,7 +96,7 @@ public class PlayerController2 : MonoBehaviour
             
 
             // Move/rotate the player right(left)
-            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Rotating the player based on turnSpeed variable
+            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Rotating the player based on turnSpeed variable and horizontal input
 
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
