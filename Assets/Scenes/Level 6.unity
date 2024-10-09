@@ -1453,8 +1453,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 2
   playerRb: {fileID: 114868849}
+  speed: 2
   forwardInput: 0
   totalDistance: 0
   velocityText: {fileID: 814610395}
@@ -1591,9 +1591,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  playerRb: {fileID: 114868849}
   speed: 0
   acceleration: 1
-  playerRb: {fileID: 114868849}
   totalDistance: 0
   velocityText: {fileID: 814610395}
   distanceText: {fileID: 1441903925}
@@ -1615,8 +1615,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a28e0177385a1ac4a913fa7656b2b278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
   playerRb: {fileID: 114868849}
+  speed: 5
   totalDistance: 0
   velocityText: {fileID: 814610395}
   distanceText: {fileID: 1441903925}
@@ -3605,6 +3605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ambientMusic: {fileID: 330585549}
+  musicToggle: {fileID: 1529196300}
 --- !u!1 &355402728
 GameObject:
   m_ObjectHideFlags: 0
@@ -4624,7 +4625,6 @@ MonoBehaviour:
   timer: 0
   isGameActive: 0
   hintClicks: 0
-  highscoreText: {fileID: 0}
   titleScreen: {fileID: 1899240363}
   pauseScreen: {fileID: 266820696}
   levelFinishedScreen: {fileID: 2077504558}
@@ -4635,6 +4635,7 @@ MonoBehaviour:
   life1: {fileID: 2108808800}
   life2: {fileID: 908585355}
   life3: {fileID: 792886296}
+  highscoreText: {fileID: 0}
 --- !u!4 &437686336
 Transform:
   m_ObjectHideFlags: 0
@@ -13069,7 +13070,6 @@ MonoBehaviour:
   - {fileID: 1540479818}
   fallingGroundsC: []
   fallingGroundsZ: []
-  fallingSpeed: 1
 --- !u!4 &1208153527
 Transform:
   m_ObjectHideFlags: 0
@@ -19420,7 +19420,6 @@ MonoBehaviour:
   timer: 0
   isGameActive: 0
   hintClicks: 0
-  highscoreText: {fileID: 0}
   titleScreen: {fileID: 0}
   pauseScreen: {fileID: 0}
   levelFinishedScreen: {fileID: 0}
@@ -19431,6 +19430,7 @@ MonoBehaviour:
   life1: {fileID: 0}
   life2: {fileID: 0}
   life3: {fileID: 0}
+  highscoreText: {fileID: 0}
 --- !u!1 &1905629097
 GameObject:
   m_ObjectHideFlags: 0
@@ -20016,6 +20016,7 @@ MonoBehaviour:
   scoreOverall: 0
   maxLives: 3
   livesLeft: 3
+  isMusicEnabled: 0
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0

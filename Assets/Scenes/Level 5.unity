@@ -2405,8 +2405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44ba890b63d18b40be1574184896556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   playerRb: {fileID: 114868849}
+  speed: 2
   totalDistance: 0
   velocityText: {fileID: 814610395}
   distanceText: {fileID: 1441903925}
@@ -5475,6 +5475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ambientMusic: {fileID: 330585549}
+  musicToggle: {fileID: 1529196300}
 --- !u!1001 &331936436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7913,7 +7914,6 @@ MonoBehaviour:
   timer: 0
   isGameActive: 0
   hintClicks: 0
-  highscoreText: {fileID: 0}
   titleScreen: {fileID: 1899240363}
   pauseScreen: {fileID: 266820696}
   levelFinishedScreen: {fileID: 2077504558}
@@ -7924,6 +7924,7 @@ MonoBehaviour:
   life1: {fileID: 1523309572}
   life2: {fileID: 1667651174}
   life3: {fileID: 2033144256}
+  highscoreText: {fileID: 0}
 --- !u!4 &437686336
 Transform:
   m_ObjectHideFlags: 0
@@ -31162,7 +31163,6 @@ MonoBehaviour:
   timer: 0
   isGameActive: 0
   hintClicks: 0
-  highscoreText: {fileID: 0}
   titleScreen: {fileID: 0}
   pauseScreen: {fileID: 0}
   levelFinishedScreen: {fileID: 0}
@@ -31173,6 +31173,7 @@ MonoBehaviour:
   life1: {fileID: 0}
   life2: {fileID: 0}
   life3: {fileID: 0}
+  highscoreText: {fileID: 0}
 --- !u!1 &1905629097
 GameObject:
   m_ObjectHideFlags: 0
@@ -32061,6 +32062,7 @@ MonoBehaviour:
   scoreOverall: 0
   maxLives: 3
   livesLeft: 3
+  isMusicEnabled: 0
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0

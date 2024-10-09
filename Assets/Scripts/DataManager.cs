@@ -11,6 +11,7 @@ public class DataManager : MonoBehaviour
     public int scoreOverall;
     public int maxLives;
     public int livesLeft;
+    public bool isMusicEnabled;
 
     private void Awake()
     {
@@ -23,4 +24,5 @@ public class DataManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
 }

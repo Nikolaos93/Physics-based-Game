@@ -9612,6 +9612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ambientMusic: {fileID: 330585549}
+  musicToggle: {fileID: 1529196300}
 --- !u!1 &338096654
 GameObject:
   m_ObjectHideFlags: 0
@@ -11873,7 +11874,6 @@ MonoBehaviour:
   timer: 0
   isGameActive: 0
   hintClicks: 0
-  highscoreText: {fileID: 1330819924}
   titleScreen: {fileID: 1899240363}
   pauseScreen: {fileID: 266820696}
   levelFinishedScreen: {fileID: 2077504558}
@@ -11884,6 +11884,7 @@ MonoBehaviour:
   life1: {fileID: 1721821573}
   life2: {fileID: 1834425610}
   life3: {fileID: 1536783207}
+  highscoreText: {fileID: 1330819924}
 --- !u!4 &437686336
 Transform:
   m_ObjectHideFlags: 0
@@ -36687,10 +36688,10 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 0
+      - m_Target: {fileID: 1963552585}
+        m_TargetAssemblyTypeName: DataManager, Assembly-CSharp
+        m_MethodName: musicEnabler
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -47306,6 +47307,7 @@ MonoBehaviour:
   scoreOverall: 0
   maxLives: 3
   livesLeft: 3
+  isMusicEnabled: 1
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0
