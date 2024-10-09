@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+/* Manages the score and highscore through the levels and saves it with "PlayerPrefs" */
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
@@ -22,7 +23,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         highScoreN = PlayerPrefs.GetInt("SavedHighScore", 0);
-        highScoreT.text = "High Score: " + highScoreN.ToString();
+        highScoreT.text = "" + highScoreN.ToString();
     }
 
     public void HighScoreCheck(int score)
