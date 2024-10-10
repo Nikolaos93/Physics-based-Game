@@ -33,7 +33,6 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround = true; // Checking whether the player is touching the ground to prevent double jumping (jumping mid-air)
     public float jumpForce; // Force that will be applied when the player triggers jump
     public AudioClip jumpSound; // Sound that will be played once when the player jumps
-    private AudioSource playerAudio; // ??
 
     // Start is called before the first frame update
     void Start()
@@ -42,8 +41,6 @@ public class PlayerController : MonoBehaviour
         playerAs.GetComponent<AudioSource>(); // Getting the AudioSource component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager and getting the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
-
-        playerAudio = GetComponent<AudioSource>(); // ?
     }
 
     // Update is called once per frame
@@ -101,7 +98,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse); // Adding jump force to the player's rigidbody component
                 isOnGround = false; // Flagging the player as not on the ground 
-                playerAudio.PlayOneShot(jumpSound, 1.0f); // Playing the jumping sound
+                playerAs.PlayOneShot(jumpSound, 1.0f); // Playing the jumping sound
             }
 
 
