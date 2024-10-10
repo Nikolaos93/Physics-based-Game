@@ -23,6 +23,9 @@ public class PlayerController6 : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI accelerationText;
 
+    public AudioSource playerAs; // Reference to the audio source attached to the player
+    public bool isOnPlatform; // flag for player touching the platform/ground
+
     private GameObject focalPoint; // focal point located at the center of the platform
 
     public GameObject[] collectables; // Array of collectables (stars and diamonds)
@@ -36,6 +39,7 @@ public class PlayerController6 : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>(); // Getting the Rigidbody component from the player object
+        playerAs.GetComponent<AudioSource>(); // Getting the AudioSource component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager and getting the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
 
@@ -56,6 +60,7 @@ public class PlayerController6 : MonoBehaviour
             // Moving the player 
             playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput); // Adding force to the player's rigid body component based on vertical input
             playerRb.AddForce(focalPoint.transform.right * speed * horizontalInput); // Adding force to the player's rigid body component based on horizontal input
+
 
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
@@ -106,7 +111,21 @@ public class PlayerController6 : MonoBehaviour
         {
             GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]); // if it is spawn a new random collectable at a random spawning point
         }
+    }
 
+    private void OnCollisionStay(Collision collision) // Checking if the player is touching the paltform
+    {
+        if (collision.gameObject.CompareTag("Platform") && gameObject.CompareTag("Player"))
+        {
+            playerAs.UnPause(); // Playing the rolling sound
+        }
+    }
+    private void OnCollisionExit(Collision collision) // Checcking if the player has stopped touching the platform
+    {
+        if (collision.gameObject.CompareTag("Platform") && gameObject.CompareTag("Player"))
+        {
+            playerAs.Pause(); // Pausing the rolling sound
+        }
     }
 
 }

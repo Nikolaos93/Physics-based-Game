@@ -17,6 +17,7 @@ TagManager:
   - Tray4
   - Tray5
   - Ground
+  - Platform
   layers:
   - Default
   - TransparentFX

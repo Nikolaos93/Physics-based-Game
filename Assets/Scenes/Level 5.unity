@@ -2412,6 +2412,7 @@ MonoBehaviour:
   distanceText: {fileID: 1441903925}
   accelerationText: {fileID: 2113809184}
   checkpointReached: 0
+  playerAs: {fileID: 0}
   tray1: 0
   tray2: 0
   tray3: 0
@@ -24051,6 +24052,7 @@ MonoBehaviour:
   distanceText: {fileID: 1441903925}
   accelerationText: {fileID: 2113809184}
   checkpointReached: 0
+  playerAs: {fileID: 1403613293}
   tray1: 0
   tray2: 0
   tray3: 0
