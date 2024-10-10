@@ -24,7 +24,8 @@ public class PlayerController5 : MonoBehaviour
     public TextMeshProUGUI distanceText;
     public TextMeshProUGUI accelerationText;
 
-    public int checkpointReached = 0;
+    public int checkpointReached = 0; // Counter for number of reached checkpoints in the level
+    public AudioSource playerAs; // Reference to the audio source attached to the player
 
     // Varaiables for checking whether specific tray has the required object on it
     public bool tray1 = false;
@@ -40,6 +41,7 @@ public class PlayerController5 : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody>(); // Getting the Rigidbody component from the player object
+        playerAs.GetComponent<AudioSource>(); // Getting the AudioSource component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager and getting the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
         gate1 = GameObject.Find("Gate1"); // Assigning "Gate 1" game object
@@ -70,9 +72,36 @@ public class PlayerController5 : MonoBehaviour
             // Move/rotate the player right(left)
             transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime); // Rotating the player based on turnSpeed variable and horizontal input
 
+            if (Input.GetKeyDown(KeyCode.W) && !playerAs.loop) // Checking whether the player wants to move forward and if the bulldozer sound is not looping
+            {
+                playerAs.loop = true; // Setting looping of the rolling sound to true
+                playerAs.Play(); // Playing the rolling sound
+            }
+            else if (Input.GetKeyUp(KeyCode.W) && playerAs.loop) // Checking whether the player wants to stop moving forward and if the bulldozer sound is looping
+            {
+                playerAs.Stop(); // Stopping the rolling sound
+                playerAs.loop = false; // Setting looping of the rolling sound to false
+            }
+            if (Input.GetKeyDown(KeyCode.S) && !playerAs.loop) // Checking whether the player wants to move backwards and if the bulldozer sound is not looping
+            {
+                playerAs.loop = true; // Setting looping of the rolling sound to true
+                playerAs.Play(); // Playing the rolling sound
+            }
+            else if (Input.GetKeyUp(KeyCode.S) && playerAs.loop) // Checking whether the player wants to stop moving backwards and if the bulldozer sound is looping
+            {
+                playerAs.Stop(); // Stopping the rolling sound
+                playerAs.loop = false; // Setting looping of the rolling sound to false
+            }
+
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
             lastPosition = transform.position; // Updates the last position to the current position
+        }
+
+        if (!gameManager.isGameActive) // Checking if the game is not active
+        {
+            playerAs.Stop(); // Stoping the ambient music if the game is not active
+            playerAs.loop = false; // Looping of the ambient music set to false 
         }
 
         playerValues(); // Calls the playerValues method to display the player's stats
