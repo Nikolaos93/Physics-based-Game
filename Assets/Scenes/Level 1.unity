@@ -1612,7 +1612,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2754,6 +2754,7 @@ MonoBehaviour:
   AudioClip1: {fileID: 8300000, guid: 58a84deb5284bc0469d5774f76e2ff0d, type: 3}
   AudioClip2: {fileID: 8300000, guid: 6a3e36feed22d6a49a3817526a5cd9ff, type: 3}
   collisionAudio: {fileID: 61566311}
+  sfxToggle: {fileID: 1106959382}
 --- !u!82 &61566311
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3313,7 +3314,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -100, y: 50}
-  m_SizeDelta: {x: 70, y: 30}
+  m_SizeDelta: {x: 80, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &82286210
 MonoBehaviour:
@@ -19437,7 +19438,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -100, y: 50}
-  m_SizeDelta: {x: 70, y: 30}
+  m_SizeDelta: {x: 80, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &769984135
 MonoBehaviour:
@@ -30437,7 +30438,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -37435,7 +37436,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -42223,7 +42224,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -100, y: 50}
-  m_SizeDelta: {x: 70, y: 30}
+  m_SizeDelta: {x: 80, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1820508483
 MonoBehaviour:
@@ -47298,6 +47299,7 @@ MonoBehaviour:
   maxLives: 3
   livesLeft: 3
   isMusicEnabled: 1
+  isSfxEnabled: 1
   ambientMusicVolume: 0.3
   dayNight: 1
 --- !u!4 &1963552586

@@ -101,8 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 2478549635105912040, guid: ec46c8c4a3cbc429382ee48bd9169b45,
     type: 3}
-  maxHeight: 0.1
-  yCenter: 1
+  maxHeight1: 1
+  yCenter1: 1
+  maxHeight2: 0.5
+  yCenter2: 6
 --- !u!82 &-3283680125914436417
 AudioSource:
   m_ObjectHideFlags: 0

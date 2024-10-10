@@ -9,15 +9,22 @@ public class AmbientMusic : MonoBehaviour
 {
     public AudioSource ambientMusic; 
     private GameManager gameManager; // Reference to the GameManager
-    //public DataManager dataManager;
+
     public Toggle musicToggle;
     public Slider ambientMusicSlider;
+
+    /*public AudioSource bombAudioSource;
+    public AudioSource starAudioSource;
+    public AudioSource gemAudioSource;*/
+    //public Toggle sfxToggle;
+
 
     // Start is called before the first frame update
     void Start()
     {
         ambientMusic = GetComponent<AudioSource>(); // Getting the Audio Source component of the Main Camera
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager and getting the GameManager script from it
+
 
         if (DataManager.Instance.isMusicEnabled)
         {
@@ -30,6 +37,17 @@ public class AmbientMusic : MonoBehaviour
 
         ambientMusicSlider.value = DataManager.Instance.ambientMusicVolume;
         ambientMusic.volume = DataManager.Instance.ambientMusicVolume;
+
+
+
+       /* if (DataManager.Instance.isSfxEnabled)
+        {
+            sfxToggle.isOn = true;
+        }
+        if (!DataManager.Instance.isSfxEnabled)
+        {
+            sfxToggle.isOn = false;
+        }*/
 
     }
 
@@ -49,6 +67,24 @@ public class AmbientMusic : MonoBehaviour
 
         DataManager.Instance.ambientMusicVolume = ambientMusicSlider.value;
         ambientMusic.volume = ambientMusicSlider.value;
+
+
+
+
+        /*if (sfxToggle.isOn)
+        {
+            DataManager.Instance.isSfxEnabled = true;
+            bombAudioSource.enabled = true;
+            starAudioSource.enabled = true;
+            gemAudioSource.enabled = true;
+        }
+        if (!sfxToggle.isOn)
+        {
+            DataManager.Instance.isSfxEnabled = false;
+            bombAudioSource.enabled = false;
+            starAudioSource.enabled = false;
+            gemAudioSource.enabled = false;
+        }*/
 
         /*if (dataManager.isMusicEnabled)
         {

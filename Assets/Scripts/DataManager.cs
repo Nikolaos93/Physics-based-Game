@@ -12,7 +12,9 @@ public class DataManager : MonoBehaviour
     public int maxLives;
     public int livesLeft;
     public bool isMusicEnabled;
+    public bool isSfxEnabled;
     public float ambientMusicVolume;
+    public float sfxVolume;
     public bool dayNight;
 
     private void Awake()

@@ -122,8 +122,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionParticle: {fileID: 19821056, guid: 079954accd64b32419ec069129c81273, type: 3}
-  maxHeight: 1
-  yCenter: 1
+  maxHeight1: 1
+  yCenter1: 1
+  maxHeight2: 0.5
+  yCenter2: 6
 --- !u!65 &753684229091674715
 BoxCollider:
   m_ObjectHideFlags: 0
