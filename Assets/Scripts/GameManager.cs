@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level 6") 
         {
             ScoreManager.instance.HighScoreCheck(score);
-            RestartGame(); // Restarting the game (going back to Main Menu)
+            //RestartGame(); // Restarting the game (going back to Main Menu)
         }
     }
 

@@ -61,10 +61,17 @@ public class PlayerController6 : MonoBehaviour
             playerRb.AddForce(focalPoint.transform.forward * speed * forwardInput); // Adding force to the player's rigid body component based on vertical input
             playerRb.AddForce(focalPoint.transform.right * speed * horizontalInput); // Adding force to the player's rigid body component based on horizontal input
 
+            playerRb.constraints = RigidbodyConstraints.None; // Removing all constraints on rigidbody if the game is active
+
 
             float distance = Vector3.Distance(lastPosition, transform.position); // Distance between the last position and the current position
             totalDistance += distance; // Adds the distance to the total distance 
             lastPosition = transform.position; // Updates the last position to the current position
+        }
+
+        if (!gameManager.isGameActive) // Checking if the game is not active in order to freeze the rigidbody
+        {
+            playerRb.constraints = RigidbodyConstraints.FreezeAll;
         }
 
         playerValues(); // Calls the playerValues method to display the player's stats
