@@ -31,6 +31,10 @@ public class CollisionSound : MonoBehaviour
         {
             sfxToggle.isOn = false;
         }
+
+        sfxSlider.value = DataManager.Instance.sfxVolume;
+        collisionAudio.volume = DataManager.Instance.sfxVolume;
+        playerSound.volume = DataManager.Instance.sfxVolume;
     }
 
     // Update is called once per frame
@@ -48,6 +52,10 @@ public class CollisionSound : MonoBehaviour
             collisionAudio.enabled = false;
             playerSound.enabled = false;
         }
+
+        DataManager.Instance.sfxVolume = sfxSlider.value;
+        collisionAudio.volume = sfxSlider.value;
+        playerSound.volume = sfxSlider.value;
     }
 
     public void PlayExplosionSound() // Method that will me called when the player collides with the object with "Bomb" tag 

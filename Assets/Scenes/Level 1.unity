@@ -2754,7 +2754,9 @@ MonoBehaviour:
   AudioClip1: {fileID: 8300000, guid: 58a84deb5284bc0469d5774f76e2ff0d, type: 3}
   AudioClip2: {fileID: 8300000, guid: 6a3e36feed22d6a49a3817526a5cd9ff, type: 3}
   collisionAudio: {fileID: 61566311}
+  playerSound: {fileID: 0}
   sfxToggle: {fileID: 1106959382}
+  sfxSlider: {fileID: 1246719798}
 --- !u!82 &61566311
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2767,7 +2769,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.33
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -47301,6 +47303,7 @@ MonoBehaviour:
   isMusicEnabled: 1
   isSfxEnabled: 1
   ambientMusicVolume: 0.3
+  sfxVolume: 0.33
   dayNight: 1
 --- !u!4 &1963552586
 Transform:
