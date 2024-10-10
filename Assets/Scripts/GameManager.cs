@@ -4,6 +4,7 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     private PlayerController playerController;
 
-    public Toggle dayNightToggle;
+    public Toggle dayNightToggle; // Reference to the toggle (in settings menu) for enabling/disabling day/night
 
     // Start is called before the first frame update
     void Start()
@@ -74,26 +75,28 @@ public class GameManager : MonoBehaviour
         //Finding the Player and its PlayerController script
         playerController = GameObject.Find("Player").GetComponent<PlayerController>(); 
 
-        if (DataManager.Instance.dayNight)
+
+        if (DataManager.Instance.dayNight) // Checking stored setting/value for toggle in DataManager
         {
-            dayNightToggle.isOn = true;
+            dayNightToggle.isOn = true; // Enabling it if the stored value is true
         }
-        if (!DataManager.Instance.dayNight)
+        if (!DataManager.Instance.dayNight) // Checking stored setting/value for toggle in DataManager
         {
-            dayNightToggle.isOn = false;
+            dayNightToggle.isOn = false; // Disabling it if the stored value is false
         }
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dayNightToggle.isOn)
+        if (dayNightToggle.isOn) // checking if the day/night toggle is on
         {
-            DataManager.Instance.dayNight = true;
+            DataManager.Instance.dayNight = true; // if it is storing value "true" in DataManager
         }
-        if (!dayNightToggle.isOn)
+        if (!dayNightToggle.isOn) // checking if the day/night toggle is off
         {
-            DataManager.Instance.dayNight = false;
+            DataManager.Instance.dayNight = false; // if it is storing value "false" in DataManager
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) //checking if Esc was pressed

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DataManager : MonoBehaviour
 {
-    // Start() and Update() methods deleted - we don't need them right now
+    // Start() and Update() methods deleted
 
     public static DataManager Instance;
 
