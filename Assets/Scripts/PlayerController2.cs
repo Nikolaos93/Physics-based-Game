@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController2 : MonoBehaviour
 {
     // Variables for player movement
+    public GameObject player;
     public Rigidbody playerRb;
     public float speed = 7.0f; // Initital speed/velocity of the player (ski-jet)
     private float turnSpeed = 25.0f; // Rotation speed of the player
@@ -51,6 +52,20 @@ public class PlayerController2 : MonoBehaviour
         {
             horizontalInput = Input.GetAxis("Horizontal"); // Getting horizontal input
             forwardInput = Input.GetAxis("Vertical"); // Getting vertical input
+
+            if (forwardInput < 0) // checking if player is trying to go backwards
+            {
+                forwardInput = 0; //preventing ski-jet from going backwards
+            }
+            
+            if (player.transform.position.x > 4.5) // preventing the player from going through the right cliff (double check, colliders also exist)
+            {
+                player.transform.position = new Vector3(4.5f, player.transform.position.y, player.transform.position.z); 
+            }
+            if (player.transform.position.x < -4.5) // preventing the player from going through the left cliff (double check, colliders also exist)
+            {
+                player.transform.position = new Vector3(-4.5f, player.transform.position.y, player.transform.position.z);
+            }
 
             if (Input.GetKeyDown(KeyCode.Space) && speed < 10)
             {

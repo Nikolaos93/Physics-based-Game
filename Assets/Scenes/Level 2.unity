@@ -1943,6 +1943,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9212ff2b91760d94a90f4f3b36cb1f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   playerRb: {fileID: 114868849}
   speed: 7
   speedOfRiver: 7
@@ -21643,6 +21644,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9212ff2b91760d94a90f4f3b36cb1f90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1522608948}
   playerRb: {fileID: 1522608950}
   speed: 7
   speedOfRiver: 7
@@ -21676,7 +21678,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 84
   m_CollisionDetection: 0
 --- !u!65 &1522608951
 BoxCollider:
