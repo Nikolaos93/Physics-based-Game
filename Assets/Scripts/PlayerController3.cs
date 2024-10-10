@@ -51,6 +51,11 @@ public class PlayerController3 : MonoBehaviour
         {
             horizontalInput = Input.GetAxis("Horizontal"); // Getting horizontal input
             forwardInput = Input.GetAxis("Vertical"); // Getting vertical input
+             
+            if (forwardInput < 0) // checking if player is trying to go backwards
+            {
+                forwardInput = 0; //preventing ski-jet from going backwards
+            }
 
             if (Input.GetKeyDown(KeyCode.Space) && speed < 10)
             {
