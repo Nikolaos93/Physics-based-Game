@@ -11886,6 +11886,7 @@ MonoBehaviour:
   life2: {fileID: 1834425610}
   life3: {fileID: 1536783207}
   highscoreText: {fileID: 1330819924}
+  dayNightToggle: {fileID: 513378850}
 --- !u!4 &437686336
 Transform:
   m_ObjectHideFlags: 0
@@ -47298,6 +47299,7 @@ MonoBehaviour:
   livesLeft: 3
   isMusicEnabled: 1
   ambientMusicVolume: 0.3
+  dayNight: 1
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0

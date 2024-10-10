@@ -55,6 +55,7 @@ public class GameManager : MonoBehaviour
 
     private PlayerController playerController;
 
+    public Toggle dayNightToggle;
 
     // Start is called before the first frame update
     void Start()
@@ -72,11 +73,29 @@ public class GameManager : MonoBehaviour
 
         //Finding the Player and its PlayerController script
         playerController = GameObject.Find("Player").GetComponent<PlayerController>(); 
+
+        if (DataManager.Instance.dayNight)
+        {
+            dayNightToggle.isOn = true;
+        }
+        if (!DataManager.Instance.dayNight)
+        {
+            dayNightToggle.isOn = false;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (dayNightToggle.isOn)
+        {
+            DataManager.Instance.dayNight = true;
+        }
+        if (!dayNightToggle.isOn)
+        {
+            DataManager.Instance.dayNight = false;
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape)) //checking if Esc was pressed
         {
             PauseGame(); // Calling PauseGame method

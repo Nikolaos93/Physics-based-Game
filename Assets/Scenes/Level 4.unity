@@ -1312,12 +1312,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 30697121}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &34332836 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3858995680371424911, guid: 51a084e4035b24e76997744a50c711d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1912122562}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &34558106
 GameObject:
   m_ObjectHideFlags: 0
@@ -5728,6 +5722,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181577284}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &185047111 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3858995680371424911, guid: 51a084e4035b24e76997744a50c711d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1990535550}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &194785824
 GameObject:
   m_ObjectHideFlags: 0
@@ -12706,6 +12706,7 @@ MonoBehaviour:
   life2: {fileID: 1786440256}
   life3: {fileID: 730033381}
   highscoreText: {fileID: 886734491}
+  dayNightToggle: {fileID: 513378850}
 --- !u!4 &437686336
 Transform:
   m_ObjectHideFlags: 0
@@ -15115,7 +15116,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1474365490}
+      - m_Target: {fileID: 1285844718}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 0
@@ -15127,7 +15128,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 34332836}
+      - m_Target: {fileID: 185047111}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 0
@@ -30506,6 +30507,7 @@ MonoBehaviour:
   livesLeft: 3
   isMusicEnabled: 1
   ambientMusicVolume: 0.3
+  dayNight: 1
 --- !u!4 &1064169650
 Transform:
   m_ObjectHideFlags: 0
@@ -36481,6 +36483,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1279337662}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1285844718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3858995680371424911, guid: 51a084e4035b24e76997744a50c711d4,
+    type: 3}
+  m_PrefabInstance: {fileID: 335790981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1292117048
 GameObject:
   m_ObjectHideFlags: 0
@@ -42055,12 +42063,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472217228}
   m_CullTransparentMesh: 1
---- !u!1 &1474365490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3858995680371424911, guid: 51a084e4035b24e76997744a50c711d4,
-    type: 3}
-  m_PrefabInstance: {fileID: 306428418}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1480456750
 GameObject:
   m_ObjectHideFlags: 0
@@ -52124,6 +52126,7 @@ MonoBehaviour:
   life2: {fileID: 0}
   life3: {fileID: 0}
   highscoreText: {fileID: 0}
+  dayNightToggle: {fileID: 0}
 --- !u!1001 &1900531068
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53642,6 +53645,7 @@ MonoBehaviour:
   livesLeft: 0
   isMusicEnabled: 0
   ambientMusicVolume: 0
+  dayNight: 0
 --- !u!4 &1963552586
 Transform:
   m_ObjectHideFlags: 0

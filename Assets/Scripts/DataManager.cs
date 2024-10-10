@@ -13,6 +13,7 @@ public class DataManager : MonoBehaviour
     public int livesLeft;
     public bool isMusicEnabled;
     public float ambientMusicVolume;
+    public bool dayNight;
 
     private void Awake()
     {
