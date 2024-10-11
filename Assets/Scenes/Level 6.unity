@@ -4934,6 +4934,7 @@ MonoBehaviour:
   life3: {fileID: 792886296}
   highscoreText: {fileID: 0}
   dayNightToggle: {fileID: 513378850}
+  collectablePoints: 0
 --- !u!4 &437686336
 Transform:
   m_ObjectHideFlags: 0
@@ -17156,7 +17157,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -20088,6 +20089,7 @@ MonoBehaviour:
   life3: {fileID: 0}
   highscoreText: {fileID: 0}
   dayNightToggle: {fileID: 0}
+  collectablePoints: 0
 --- !u!1 &1905629097
 GameObject:
   m_ObjectHideFlags: 0

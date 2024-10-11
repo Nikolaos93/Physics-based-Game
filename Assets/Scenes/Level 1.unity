@@ -11862,6 +11862,8 @@ MonoBehaviour:
   timerCountdownText: {fileID: 1884403019}
   levelCompleteText: {fileID: 813663428}
   levelResultsText: {fileID: 1129180706}
+  gameCompleteText: {fileID: 0}
+  gameResultsText: {fileID: 0}
   pauseText: {fileID: 1188853949}
   gameOverText: {fileID: 1905629099}
   lifeLostText: {fileID: 852731735}
@@ -11869,6 +11871,7 @@ MonoBehaviour:
   checkpointAdviceText: {fileID: 1535360194}
   checkpointAdvice2Text: {fileID: 1803981378}
   nextLevelButton: {fileID: 1472217230}
+  finishGameButton: {fileID: 0}
   continueButton: {fileID: 527640259}
   leaveButton: {fileID: 1481707210}
   restartButton: {fileID: 2059496718}
@@ -11881,6 +11884,7 @@ MonoBehaviour:
   titleScreen: {fileID: 1899240363}
   pauseScreen: {fileID: 266820696}
   levelFinishedScreen: {fileID: 2077504558}
+  gameFinishedScreen: {fileID: 0}
   statsScreen: {fileID: 0}
   gameOverScreen: {fileID: 1872487024}
   lifeLostScreen: {fileID: 1632062669}
@@ -11890,6 +11894,7 @@ MonoBehaviour:
   life3: {fileID: 1536783207}
   highscoreText: {fileID: 1330819924}
   dayNightToggle: {fileID: 513378850}
+  collectablePoints: 0
 --- !u!4 &437686336
 Transform:
   m_ObjectHideFlags: 0
@@ -38341,7 +38346,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}

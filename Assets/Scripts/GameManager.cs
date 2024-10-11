@@ -63,6 +63,7 @@ public class GameManager : MonoBehaviour
     public Toggle dayNightToggle; // Reference to the toggle (in settings menu) for enabling/disabling day/night
 
     public int collectablePoints;
+    private int scoreSoFar;
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +95,8 @@ public class GameManager : MonoBehaviour
 
         collectablePoints = 0;
         Debug.Log("Collectable Points: " + collectablePoints);
+        scoreSoFar = DataManager.Instance.scoreOverall;
+        Debug.Log("Score so far: " + scoreSoFar);
     }
 
     // Update is called once per frame
@@ -230,20 +233,22 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete() // This method will be called when the player reaches the finish line
     {
-        Debug.Log("Collectable Points: " + collectablePoints);
-        // Calculating the score at the end of the level based on: 100 for level completion + seconds left - 30 points for each hint used
-        UpdateScore(100 + (int)timer + (90 - hintClicks * 30)); 
 
-        DataManager.Instance.scoreOverall = score; // Keeping the score for the next level
+        //DataManager.Instance.scoreOverall = score; // Keeping the score for the next level
 
         // Activating all relevant screens/texts/buttons for Level Complete Menu
         if (SceneManager.GetActiveScene().name != "Level 6")
         {
+            // Calculating the score at the end of the level based on: 100 for level completion + seconds left - 30 points for each hint used
+            UpdateScore(100 + (int)timer + (90 - hintClicks * 30));
+            DataManager.Instance.scoreOverall = score; // Keeping the score for the next level
+
+            // Showing Level Finished Menu and calculating score
             levelFinishedScreen.gameObject.SetActive(true);
             nextLevelButton.gameObject.SetActive(true);
             levelCompleteText.gameObject.SetActive(true);
             levelResultsText.gameObject.SetActive(true);
-            levelResultsText.text = "Score: level (100) + " + " timer (" + (int)timer + ") + " + "hints (90 - 30*" + hintClicks + " used) = " + score;
+            levelResultsText.text = "Score: so far (" + scoreSoFar + ") + level (100) + " + "collectables (" + collectablePoints + ") + timer (" + (int)timer + ") + " + "hints (90 - 30*" + hintClicks + " used) = " + score;
         }
         
 
@@ -252,14 +257,18 @@ public class GameManager : MonoBehaviour
         // If the final level is complete updating the highscore if needed
         if (SceneManager.GetActiveScene().name == "Level 6") 
         {
+            // Calculating the score at the end of the game based on: 200 per life left + 100 for level completion + seconds left - 30 points for each hint used
+            UpdateScore(200*DataManager.Instance.livesLeft + 100 + (90 - hintClicks * 30));
+            DataManager.Instance.scoreOverall = score; // Storing the overall score
+
+            // Showing Game Finished Menu and calculating score
             gameFinishedScreen.gameObject.SetActive(true);
             finishGameButton.gameObject.SetActive(true);
             gameCompleteText.gameObject.SetActive(true);
             gameResultsText.gameObject.SetActive(true);
-            gameResultsText.text = "Score: level (100) + " + /*" distance(" + (int)playerController.totalDistance + ") + " +*/ " timer (" + (int)timer + ") + " + "hints (90 - 30*" + hintClicks + " used) = " + score;
+            gameResultsText.text = "Score: so far (" + scoreSoFar + ") + lives left: (200*" + DataManager.Instance.livesLeft + ") + level (100) + " + "collectables (" + collectablePoints + ") + " + "hints (90 - 30*" + hintClicks + " used) = " + score;
 
-            ScoreManager.instance.HighScoreCheck(score);
-            //RestartGame(); // Restarting the game (going back to Main Menu)
+            ScoreManager.instance.HighScoreCheck(score); 
         }
     }
 
