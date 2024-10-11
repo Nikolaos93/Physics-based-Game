@@ -34,6 +34,8 @@ public class PlayerController6 : MonoBehaviour
 
     private Bomb bCollectable; // refference to Bomb.cs where number of collected pickups is tracked
 
+    private int spawningPointCounter; // Counter for spawning points
+
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,8 @@ public class PlayerController6 : MonoBehaviour
         focalPoint = GameObject.Find("Focal Point"); // Finding the Focal Point in the scene
 
         collectableCount = 0; // Initial number of collectables is 0
+
+        spawningPointCounter = 0; // Initial spawning point counter is 0
     }
 
     // Update is called once per frame
@@ -112,11 +116,15 @@ public class PlayerController6 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Gem") && gameObject.CompareTag("Player")) // Checking if the player has collided with the gem/diamond
         {
-            GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]); // if it is spawn a new random collectable at a random spawning point
+            //GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]); // if it is spawn a new random collectable at a random spawning point
+            GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[spawningPointCounter%6]);
+            spawningPointCounter++;
         }
         if (collision.gameObject.CompareTag("Star") && gameObject.CompareTag("Player")) // Checking if the player has collided with the star
         {
-            GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]); // if it is spawn a new random collectable at a random spawning point
+            //GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[UnityEngine.Random.Range(0, spawningPoints.Length)]); // if it is spawn a new random collectable at a random spawning point
+            GameObject collectable = Instantiate(collectables[UnityEngine.Random.Range(0, collectables.Length)], spawningPoints[spawningPointCounter%6]);
+            spawningPointCounter++;
         }
     }
 
