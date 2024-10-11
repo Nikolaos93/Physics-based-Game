@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerCountdownText;
     public TextMeshProUGUI levelCompleteText;
     public TextMeshProUGUI levelResultsText;
+    public TextMeshProUGUI gameCompleteText;
+    public TextMeshProUGUI gameResultsText;
     public TextMeshProUGUI pauseText;
     public TextMeshProUGUI gameOverText;
     public TextMeshProUGUI lifeLostText;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     // Buttons (names are self explanatory)
     public Button nextLevelButton;
+    public Button finishGameButton;
     public Button continueButton;
     public Button leaveButton;
     public Button restartButton;
@@ -45,6 +48,7 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     public GameObject pauseScreen;
     public GameObject levelFinishedScreen;
+    public GameObject gameFinishedScreen;
     public GameObject statsScreen;
     public GameObject gameOverScreen;
     public GameObject lifeLostScreen;
@@ -222,22 +226,32 @@ public class GameManager : MonoBehaviour
     public void LevelComplete() // This method will be called when the player reaches the finish line
     {
         // Calculating the score at the end of the level based on: 100 for level completion + seconds left - 30 points for each hint used
-        UpdateScore(100 - /*(int)playerController.totalDistance*/ + (int)timer - hintClicks * 30); 
+        UpdateScore(100 - /*(int)playerController.totalDistance*/ + (int)timer + (90 - hintClicks * 30)); 
 
         DataManager.Instance.scoreOverall = score; // Keeping the score for the next level
 
         // Activating all relevant screens/texts/buttons for Level Complete Menu
-        levelFinishedScreen.gameObject.SetActive(true);
-        nextLevelButton.gameObject.SetActive(true);
-        levelCompleteText.gameObject.SetActive(true);
-        levelResultsText.gameObject.SetActive(true);
-        levelResultsText.text = "Score: level(100) - " + /*" distance(" + (int)playerController.totalDistance + ") + " +*/ " timer(" + (int)timer + ") - " + "hints(30*" + hintClicks + ") = " + score;
+        if (SceneManager.GetActiveScene().name != "Level 6")
+        {
+            levelFinishedScreen.gameObject.SetActive(true);
+            nextLevelButton.gameObject.SetActive(true);
+            levelCompleteText.gameObject.SetActive(true);
+            levelResultsText.gameObject.SetActive(true);
+            levelResultsText.text = "Score: level (100) + " + /*" distance(" + (int)playerController.totalDistance + ") + " +*/ " timer (" + (int)timer + ") + " + "hints (90 - 30*" + hintClicks + " used) = " + score;
+        }
+        
 
         isGameActive = false; // flagging the game state as inactive/false
 
         // If the final level is complete updating the highscore if needed
         if (SceneManager.GetActiveScene().name == "Level 6") 
         {
+            gameFinishedScreen.gameObject.SetActive(true);
+            finishGameButton.gameObject.SetActive(true);
+            gameCompleteText.gameObject.SetActive(true);
+            gameResultsText.gameObject.SetActive(true);
+            gameResultsText.text = "Score: level (100) + " + /*" distance(" + (int)playerController.totalDistance + ") + " +*/ " timer (" + (int)timer + ") + " + "hints (90 - 30*" + hintClicks + " used) = " + score;
+
             ScoreManager.instance.HighScoreCheck(score);
             //RestartGame(); // Restarting the game (going back to Main Menu)
         }
@@ -316,7 +330,7 @@ public class GameManager : MonoBehaviour
         }
         
         // if the timer has reached 0 on the final level (Level 6); goal is to survive for 60 seconds
-        if (timer <= 0 && SceneManager.GetActiveScene().buildIndex == 5)
+        if (timer <= 0 && SceneManager.GetActiveScene().buildIndex == 5 && isGameActive)
         {
             LevelComplete(); // Call the LevelComplete method when the timer reaches 0
         }
