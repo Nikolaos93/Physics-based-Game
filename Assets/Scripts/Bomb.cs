@@ -58,12 +58,12 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other) // Checking if something has collided with the bomb
+    /*private void OnTriggerEnter(Collider other) // Checking if something has collided with the bomb
     {
         Destroy(gameObject); // Destroying the bomb in case of collision 
         Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation); // Playing the explosion particle effect
         gameManager.GameOver(); // Calling the GameOver method from GameManager
-    }
+    }*/
 
     private void OnCollisionEnter(Collision collision) // Checking what collided with the bomb
     {
@@ -84,6 +84,7 @@ public class Bomb : MonoBehaviour
             
             Destroy(gameObject); // destroying the gem in case of collision 
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation); // Playing the particle effect for pickup 
+            gameManager.collectablePoints += 10;
             gameManager.UpdateScore(10); // Calling the UpdateScore from GameManager and updating the score by 10
         }
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Star")) // Checking if the Player collided with the star
@@ -94,7 +95,8 @@ public class Bomb : MonoBehaviour
              
             Destroy(gameObject); // Destroying the star in case of collision
             Instantiate(explosionParticle, transform.position, explosionParticle.transform.rotation); // Playing the particle effect for pickup 
-            gameManager.UpdateScore(5); // Calling the UpdateScore from GameManager and updating the score by 10
+            gameManager.collectablePoints += 5;
+            gameManager.UpdateScore(5); // Calling the UpdateScore from GameManager and updating the score by 5
         }
 
     }

@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
 
     public Toggle dayNightToggle; // Reference to the toggle (in settings menu) for enabling/disabling day/night
 
+    public int collectablePoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -89,6 +91,9 @@ public class GameManager : MonoBehaviour
             dayNightToggle.isOn = false; // Disabling it if the stored value is false
         }
 
+
+        collectablePoints = 0;
+        Debug.Log("Collectable Points: " + collectablePoints);
     }
 
     // Update is called once per frame
@@ -225,8 +230,9 @@ public class GameManager : MonoBehaviour
 
     public void LevelComplete() // This method will be called when the player reaches the finish line
     {
+        Debug.Log("Collectable Points: " + collectablePoints);
         // Calculating the score at the end of the level based on: 100 for level completion + seconds left - 30 points for each hint used
-        UpdateScore(100 - /*(int)playerController.totalDistance*/ + (int)timer + (90 - hintClicks * 30)); 
+        UpdateScore(100 + (int)timer + (90 - hintClicks * 30)); 
 
         DataManager.Instance.scoreOverall = score; // Keeping the score for the next level
 
@@ -237,7 +243,7 @@ public class GameManager : MonoBehaviour
             nextLevelButton.gameObject.SetActive(true);
             levelCompleteText.gameObject.SetActive(true);
             levelResultsText.gameObject.SetActive(true);
-            levelResultsText.text = "Score: level (100) + " + /*" distance(" + (int)playerController.totalDistance + ") + " +*/ " timer (" + (int)timer + ") + " + "hints (90 - 30*" + hintClicks + " used) = " + score;
+            levelResultsText.text = "Score: level (100) + " + " timer (" + (int)timer + ") + " + "hints (90 - 30*" + hintClicks + " used) = " + score;
         }
         
 
