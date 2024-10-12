@@ -32,6 +32,10 @@ public class ArrowVectors4 : MonoBehaviour
         {
             arrowDirection = -1; // If the player is moving backward, the arrow should point in the negative direction
         }
+        if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.S) || Input.GetKeyUp(KeyCode.DownArrow))
+        {
+            arrowDirection = 0; // If the player is not moving, the arrow should not be visible (will be visible like a unit vector)
+        }
         transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, playerController4.acceleration * arrowDirection); // Scaling the vector by appropriate magnitude (in terms of acceleration)
     }
 }
