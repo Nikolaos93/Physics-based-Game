@@ -16,6 +16,8 @@ public class ArrowVectors3 : MonoBehaviour
 
     private Vector3 vectorStationary; // Variable that will scale the magnitude in stagnant water (checkpoint)
 
+    private int arrowDirection = 1; // Variable that will determine the direction of the arrow
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,10 +33,20 @@ public class ArrowVectors3 : MonoBehaviour
     {
         arrowVector1.transform.position = player.transform.position + offset; // Updating the position of the player's vector arrow by adding the offset to the player's position
         arrowVector1.transform.rotation = player.transform.rotation; // Updating the rotation of the player's vector arrow to match the orientation of the player
-        arrowVector1.transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController3.speed * 0.4f)); // Scaling the vector by appropriate magnitude (in terms of player's vellocity)
+        //arrowVector1.transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController3.speed * 0.4f)); // Scaling the vector by appropriate magnitude (in terms of player's vellocity)
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            arrowDirection = 1; // If the player is moving forward, the arrow should point in the positive direction
+        }
+        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow))
+        {
+            arrowDirection = 0; // If the player is moving backward, the arrow should point in the negative direction
+        }
+        arrowVector1.transform.localScale = new Vector3(arrowVector1.transform.localScale.x, arrowVector1.transform.localScale.y, playerController3.speed * arrowDirection); // Scaling the vector by appropriate magnitude (in terms of vellocity)
 
         arrowVector2.transform.position = player.transform.position + offset2; // Updating the position of the river's vector arrow by adding the offset to the player's position
-        arrowVector2.transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController3.speedOfRiver * 0.4f)); // Scaling the vector by appropriate magnitude (in terms of river's vellocity)
+        //arrowVector2.transform.localScale = vectorMagnitude + new Vector3(0, 0, vectorMagnitude.z + (vectorMagnitude.z * playerController3.speedOfRiver * 0.4f)); // Scaling the vector by appropriate magnitude (in terms of river's vellocity)
+        arrowVector2.transform.localScale = new Vector3(arrowVector2.transform.localScale.x, arrowVector2.transform.localScale.y, playerController3.speedOfRiver); // Scaling the vector by appropriate magnitude (in terms of river's vellocity)
 
         if (player.transform.position.z > 2.5 && player.transform.position.z < 37.5) // Checking if the player is located in the "fisrt river" (flowing from right to left)
         {
@@ -46,7 +58,8 @@ public class ArrowVectors3 : MonoBehaviour
         }
         else // Player is located in stagnant waters (checkpoint)
         {
-            arrowVector2.transform.localScale = vectorStationary; // Water doesn't flow hence the river's vector is equal to the zero/null vecctor
+            //arrowVector2.transform.localScale = vectorStationary; // Water doesn't flow hence the river's vector is equal to the zero/null vecctor
+            arrowVector2.transform.localScale = new Vector3(arrowVector2.transform.localScale.x, arrowVector2.transform.localScale.y, 0);
         }
     }
 }
