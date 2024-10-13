@@ -131,13 +131,13 @@ public class PlayerController3 : MonoBehaviour
                 transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput, Space.Self); // Moving the player forward, based on local coordinates (frame of reference)
             }
 
-            if (Input.GetKeyDown(KeyCode.W)) // Checking whether the player wants to move forward
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) // Checking whether the player wants to move forward
             {
                 waterSplashParticle.Play(); // Playing the water splashing particle effect
                 playerAudio.loop = true; // Setting looping of the jet-ski sound to true
                 playerAudio.Play(); // Playing the jet-ski sound
             }
-            else if (Input.GetKeyUp(KeyCode.W)) // Checking whether the player wants to stop moving forward
+            else if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.UpArrow)) // Checking whether the player wants to stop moving forward
             {
                 waterSplashParticle.Stop(); // Stoping the water splashing particle effect
                 playerAudio.Stop(); // Stopping the jet-ski sound
