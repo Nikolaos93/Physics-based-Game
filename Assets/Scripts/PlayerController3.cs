@@ -39,8 +39,6 @@ public class PlayerController3 : MonoBehaviour
         playerAudio = GetComponent<AudioSource>(); // Getting the AudioSource component from the player object
         gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>(); // Finding the GameManager and getting the GameManager script from it
         lastPosition = transform.position; // Set the last position of the player to the starting position
-
-        speedUpstream = speed - speedOfRiver; // Calculating the resulting speed when the game starts 
     }
 
     // Update is called once per frame
